@@ -75,7 +75,7 @@
  如有更多需求，请前往：https://github.com/BAHome
  
  项目源码地址：
- OC 版 ：https://github.com/BAHome/BAButton
+ OC 版 ：https://github.com/BAHome/BAGridView
  
  最新更新时间：2017-06-21 【倒叙】<br>
  最新Version：【Version：1.0.1】<br>
