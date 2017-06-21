@@ -140,7 +140,15 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  */
 @property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;
 
-@property(nonatomic, assign) CGFloat ba_gridView_imageH;
+/**
+ item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+ */
+@property(nonatomic, strong) UIFont *ba_gridView_titleFont;
+
+/**
+ item：Desc Font，默认：两行文字下 12
+ */
+@property(nonatomic, strong) UIFont *ba_gridView_titleDescFont;
 
 /**
  快速创建宫格

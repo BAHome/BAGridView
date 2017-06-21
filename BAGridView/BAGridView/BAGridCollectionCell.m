@@ -153,4 +153,10 @@
     _ba_gridView_lineWidth = ba_gridView_lineWidth;
 }
 
+- (void)setBa_gridView_titleFont:(UIFont *)ba_gridView_titleFont
+{
+    _ba_gridView_titleFont = ba_gridView_titleFont;
+    self.titleLabel.font = ba_gridView_titleFont;
+}
+
 @end

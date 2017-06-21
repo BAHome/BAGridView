@@ -183,6 +183,8 @@ static NSString * const kCellID = @"ViewControllerCell";
 //            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
 //            tempView.ba_gridView_titleColor = BAKit_Color_Black;
+            // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+            tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
             
             self.gridView = tempView;
             
@@ -213,6 +215,10 @@ static NSString * const kCellID = @"ViewControllerCell";
             tempView.ba_gridView_titleColor = BAKit_Color_Black;
             //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
             tempView.ba_gridView_titleDescColor = BAKit_Color_Gray_7;
+            // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+            tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
+            // item：Desc Font，默认：两行文字下 12
+            tempView.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
 
             self.gridView2 = tempView;
 

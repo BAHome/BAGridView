@@ -80,4 +80,9 @@
  */
 @property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
 
+/**
+ item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+ */
+@property(nonatomic, strong) UIFont *ba_gridView_titleFont;
+
 @end

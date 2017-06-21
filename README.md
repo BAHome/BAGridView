@@ -12,6 +12,7 @@
 * 4、自定义分割线：显示/隐藏<br>
 * 5、自定义分割线：颜色<br>
 * 6、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+* 7、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 
 ## 2、图片示例
 ![BAGridView1](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView1.png)
@@ -59,6 +60,7 @@
  最新Version：【Version：1.0.1】<br>
  更新内容：<br>
  1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 1.0.1.2、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-20 【倒叙】<br>
  最新Version：【Version：1.0.0】<br>
@@ -159,7 +161,16 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  */
 @property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;
 
-@property(nonatomic, assign) CGFloat ba_gridView_imageH;
+/**
+ item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+ */
+@property(nonatomic, strong) UIFont *ba_gridView_titleFont;
+
+/**
+ item：Desc Font，默认：两行文字下 12
+ */
+@property(nonatomic, strong) UIFont *ba_gridView_titleDescFont;
+
 
 /**
  快速创建宫格
@@ -182,7 +193,6 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 ### demo 示例
 ```
 // 示例1：
-
 - (BAGridView *)gridView
 {
     if (!_gridView)
@@ -201,6 +211,8 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 //            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
 //            tempView.ba_gridView_titleColor = BAKit_Color_Black;
+            // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+            tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
             
             self.gridView = tempView;
             
@@ -254,6 +266,10 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
             tempView.ba_gridView_titleColor = BAKit_Color_Black;
             //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
             tempView.ba_gridView_titleDescColor = BAKit_Color_Gray_7;
+            // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+            tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
+            // item：Desc Font，默认：两行文字下 12
+            tempView.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
 
             self.gridView2 = tempView;
 
@@ -298,6 +314,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  最新Version：【Version：1.0.1】<br>
  更新内容：<br>
  1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+  1.0.1.2、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-20 【倒叙】<br>
  最新Version：【Version：1.0.0】<br>

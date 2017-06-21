@@ -122,6 +122,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         cell.ba_gridView_lineColor = self.ba_gridView_lineColor;
         cell.ba_gridView_lineWidth = self.ba_gridView_lineWidth;
         cell.ba_gridView_itemImageInset = self.ba_gridView_itemImageInset;
+        cell.ba_gridView_titleFont = self.ba_gridView_titleFont;
         
         return cell;
     }
@@ -136,6 +137,8 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         cell2.ba_gridView_lineColor = self.ba_gridView_lineColor;
         cell2.ba_gridView_lineWidth = self.ba_gridView_lineWidth;
         cell2.ba_gridView_itemImageInset = self.ba_gridView_itemImageInset;
+        cell2.ba_gridView_titleFont = self.ba_gridView_titleFont;
+        cell2.ba_gridView_titleDescFont = self.ba_gridView_titleDescFont;
         
         return cell2;
     }
@@ -203,7 +206,6 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 - (void)setBa_gridView_rowCount:(NSInteger)ba_gridView_rowCount
 {
     _ba_gridView_rowCount = ba_gridView_rowCount;
-//    self.gridItem_w = BAKit_Flat((BAKit_SCREEN_WIDTH - (ba_gridView_rowCount - 1) * self.ba_gridView_lineWidth)/ba_gridView_rowCount);
     self.gridItem_w = (BAKit_SCREEN_WIDTH - (ba_gridView_rowCount - 1) * self.ba_gridView_lineWidth)/ba_gridView_rowCount;
 
     [self.collectionView reloadData];
@@ -254,6 +256,18 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         self.ba_gridView_lineWidth = 0;
         [self.collectionView reloadData];
     }
+}
+
+- (void)setBa_gridView_titleFont:(UIFont *)ba_gridView_titleFont
+{
+    _ba_gridView_titleFont = ba_gridView_titleFont;
+    [self.collectionView reloadData];
+}
+
+- (void)setBa_gridView_titleDescFont:(UIFont *)ba_gridView_titleDescFont
+{
+    _ba_gridView_titleDescFont = ba_gridView_titleDescFont;
+    [self.collectionView reloadData];
 }
 
 @end
