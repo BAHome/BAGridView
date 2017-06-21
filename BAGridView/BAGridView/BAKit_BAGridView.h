@@ -78,6 +78,11 @@
  OC 版 ：https://github.com/BAHome/BAGridView
  
  最新更新时间：2017-06-21 【倒叙】<br>
+ 最新Version：【Version：1.0.2】<br>
+ 更新内容：<br>
+ 1.0.2.1、新增 支持 自定义 item 背景颜色 和 选中背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 
+ 最新更新时间：2017-06-21 【倒叙】<br>
  最新Version：【Version：1.0.1】<br>
  更新内容：<br>
  1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>

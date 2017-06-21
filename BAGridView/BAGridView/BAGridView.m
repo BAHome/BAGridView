@@ -21,6 +21,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 
 @property(nonatomic, assign) CGFloat gridItem_w;
 @property(nonatomic, assign) CGFloat ba_gridView_lineWidth;
+@property(nonatomic, weak) NSIndexPath  *selectIndexPath;
 
 @end
 
@@ -93,6 +94,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     self.ba_gridView_titleColor = BAKit_Color_Black;
     self.ba_gridView_titleDescColor = BAKit_Color_Gray_9;
     self.ba_gridView_itemImageInset = 0;
+    self.ba_gridView_backgroundColor = BAKit_Color_White;
 }
 
 - (void)layoutSubviews
@@ -112,6 +114,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 {
     BAGridCollectionCell *cell;
     BAGridViewTypeTitleDescCell *cell2;
+    [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     if (self.gridViewType == BAGridViewTypeImageTitle)
     {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
@@ -148,7 +151,11 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+    UICollectionViewCell *cell =  [collectionView cellForItemAtIndexPath:indexPath];
+    // 选中之后的cell变颜色
+    [self ba_updateCell:cell indexPath:indexPath selected:YES];
     
     BAGridItemModel *model = self.dataArray[indexPath.row];
 
@@ -156,6 +163,26 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     {
         self.ba_gridViewBlock(model, indexPath);
     }    
+}
+
+// 取消选中操作
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+
+    [self ba_updateCell:cell indexPath:indexPath selected:NO];
+}
+
+// 改变cell的背景颜色
+- (void)ba_updateCell:(id)cell
+            indexPath:(NSIndexPath *)indexPath
+             selected:(BOOL)selected
+{
+    [UIView animateWithDuration:0.25f animations:^{
+        ((UICollectionViewCell *)cell).backgroundColor = selected ? self.ba_gridView_selectedBackgroundColor : self.ba_gridView_backgroundColor;
+    }];
+
+    self.selectIndexPath = indexPath;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -268,6 +295,18 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 {
     _ba_gridView_titleDescFont = ba_gridView_titleDescFont;
     [self.collectionView reloadData];
+}
+
+- (void)setBa_gridView_backgroundColor:(UIColor *)ba_gridView_backgroundColor
+{
+    _ba_gridView_backgroundColor = ba_gridView_backgroundColor;
+    self.backgroundColor = ba_gridView_backgroundColor;
+    [self.collectionView reloadData];
+}
+
+- (void)setBa_gridView_selectedBackgroundColor:(UIColor *)ba_gridView_selectedBackgroundColor
+{
+    _ba_gridView_selectedBackgroundColor = ba_gridView_selectedBackgroundColor;
 }
 
 @end

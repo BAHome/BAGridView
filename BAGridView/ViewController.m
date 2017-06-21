@@ -185,6 +185,10 @@ static NSString * const kCellID = @"ViewControllerCell";
 //            tempView.ba_gridView_titleColor = BAKit_Color_Black;
             // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
             tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
+            // item：背景颜色，默认：BAKit_Color_White
+            tempView.ba_gridView_backgroundColor = BAKit_Color_White;
+            // item：背景选中颜色，默认：无色
+            tempView.ba_gridView_selectedBackgroundColor = BAKit_Color_Red;
             
             self.gridView = tempView;
             
@@ -192,7 +196,6 @@ static NSString * const kCellID = @"ViewControllerCell";
             
             BAKit_ShowAlertWithMsg_ios8(model.titleString);
         }];
-        _gridView.backgroundColor = BAKit_Color_White;
     }
     return _gridView;
 }
@@ -219,14 +222,17 @@ static NSString * const kCellID = @"ViewControllerCell";
             tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
             // item：Desc Font，默认：两行文字下 12
             tempView.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
-
+            // item：背景颜色，默认：BAKit_Color_White
+//            tempView.ba_gridView_backgroundColor = [UIColor yellowColor];
+//            // item：背景选中颜色，默认：无色
+//            tempView.ba_gridView_selectedBackgroundColor = [UIColor greenColor];
+            
             self.gridView2 = tempView;
 
         } block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
             
-            BAKit_ShowAlertWithMsg_ios8(model.titleString);
+//            BAKit_ShowAlertWithMsg_ios8(model.titleString);
         }];
-        _gridView2.backgroundColor = [UIColor yellowColor];
     }
     return _gridView2;
 }

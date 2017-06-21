@@ -136,6 +136,16 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 @property(nonatomic, strong) UIColor *ba_gridView_lineColor;
 
 /**
+ item：背景颜色，默认：BAKit_Color_White
+ */
+@property(nonatomic, strong) UIColor *ba_gridView_backgroundColor;
+
+/**
+ item：背景选中颜色，默认：无色
+ */
+@property(nonatomic, strong) UIColor *ba_gridView_selectedBackgroundColor;
+
+/**
  item：是否显示分割线
  */
 @property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;

@@ -13,6 +13,7 @@
 * 5、自定义分割线：颜色<br>
 * 6、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 * 7、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+* 8、新增 支持 自定义 item 背景颜色 和 选中背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 
 ## 2、图片示例
 ![BAGridView1](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView1.png)
@@ -55,6 +56,11 @@
  
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
+ 
+ 最新更新时间：2017-06-21 【倒叙】<br>
+ 最新Version：【Version：1.0.2】<br>
+ 更新内容：<br>
+ 1.0.2.1、新增 支持 自定义 item 背景颜色 和 选中背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-21 【倒叙】<br>
  最新Version：【Version：1.0.1】<br>
@@ -157,6 +163,16 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 @property(nonatomic, strong) UIColor *ba_gridView_lineColor;
 
 /**
+ item：背景颜色，默认：BAKit_Color_White
+ */
+@property(nonatomic, strong) UIColor *ba_gridView_backgroundColor;
+
+/**
+ item：背景选中颜色，默认：无色
+ */
+@property(nonatomic, strong) UIColor *ba_gridView_selectedBackgroundColor;
+
+/**
  item：是否显示分割线
  */
 @property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;
@@ -170,7 +186,6 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  item：Desc Font，默认：两行文字下 12
  */
 @property(nonatomic, strong) UIFont *ba_gridView_titleDescFont;
-
 
 /**
  快速创建宫格
@@ -213,6 +228,10 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 //            tempView.ba_gridView_titleColor = BAKit_Color_Black;
             // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
             tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
+            // item：背景颜色，默认：BAKit_Color_White
+            tempView.ba_gridView_backgroundColor = BAKit_Color_White;
+            // item：背景选中颜色，默认：无色
+            tempView.ba_gridView_selectedBackgroundColor = BAKit_Color_Red;
             
             self.gridView = tempView;
             
