@@ -77,4 +77,9 @@
 
 @property(nonatomic, assign) CGFloat ba_gridView_lineWidth;
 
+/**
+ item：图片与文字间距
+ */
+@property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
+
 @end

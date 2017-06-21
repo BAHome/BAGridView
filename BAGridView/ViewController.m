@@ -172,13 +172,15 @@ static NSString * const kCellID = @"ViewControllerCell";
         _gridView = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeImageTitle dataArray:self.gridDataArray configurationBlock:^(BAGridView *tempView) {
             
             // 是否显示分割线
-            tempView.showLineView = NO;
+//            tempView.showLineView = NO;
             // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
 //            tempView.ba_gridView_lineColor = BAKit_Color_Red;
             // item：每行 item 的个数，默认为4个
             tempView.ba_gridView_rowCount = kGridView_rowCount;
             // item：高度
             tempView.ba_gridView_itemHeight = kGridView_itemHeight;
+            // item：图片与文字间距（或者两行文字类型的间距），默认：0
+//            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
 //            tempView.ba_gridView_titleColor = BAKit_Color_Black;
             
@@ -197,8 +199,7 @@ static NSString * const kCellID = @"ViewControllerCell";
 {
     if (!_gridView2)
     {
-        _gridView2 = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeTitleDesc
-                                                        dataArray:self.gridDataArray2 configurationBlock:^(BAGridView *tempView) {
+        _gridView2 = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeTitleDesc dataArray:self.gridDataArray2 configurationBlock:^(BAGridView *tempView) {
                                                             
             // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
             tempView.ba_gridView_lineColor = BAKit_Color_Red;
@@ -206,6 +207,8 @@ static NSString * const kCellID = @"ViewControllerCell";
             tempView.ba_gridView_rowCount = kGridView_rowCount2;
             // item：高度
             tempView.ba_gridView_itemHeight = kGridView_itemHeight2;
+            // item：图片与文字间距（或者两行文字类型的间距），默认：0
+//            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
             tempView.ba_gridView_titleColor = BAKit_Color_Black;
             //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
@@ -229,7 +232,7 @@ static NSString * const kCellID = @"ViewControllerCell";
         _gridDataArray = @[].mutableCopy;
         
         NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
-        NSArray *titleArray = @[@"扫一扫", @"付钱", @"卡包", @"收银", @"卡包"];
+        NSArray *titleArray = @[@"扫一扫", @"付钱", @"卡包", @"收银", @"卡包2"];
         
         for (NSInteger i = 0; i < titleArray.count; i++)
         {

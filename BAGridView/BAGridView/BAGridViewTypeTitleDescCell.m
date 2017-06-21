@@ -54,13 +54,26 @@
     
     min_x = 0;
     min_w = view_w - self.ba_gridView_lineWidth;
-    min_h = 25;
-    min_y = view_h * 0.5 - min_h;
+    min_h = view_h * 0.4;
+    min_y = CGRectGetMidY(self.bounds) - min_h / 2 - view_h * 0.15;
     self.titleLabel.frame = BAKit_CGRectFlatMake(min_x, min_y, min_w, min_h);
     
-    min_y = view_h * 0.5;
-    min_h = 20;
+    min_y = CGRectGetMaxY(self.titleLabel.frame) + self.ba_gridView_itemImageInset;
+    min_h = view_h * 0.3;
     self.descLabel.frame = BAKit_CGRectFlatMake(min_x, min_y, min_w, min_h);
+    
+//    min_w = view_h * 0.4;
+//    min_h = min_w;
+//    min_x = (view_w - min_w) / 2;
+//    min_y = CGRectGetMidY(self.bounds) - min_w / 2 - view_h * 0.15;
+//    self.imageView.frame = BAKit_CGRectFlatMake(min_x, min_y, min_w, min_h);
+//    
+//    min_x = 0;
+//    min_y = CGRectGetMaxY(self.imageView.frame) + self.ba_gridView_itemImageInset;
+//    min_w = view_w - self.ba_gridView_lineWidth;
+//    min_h = view_h - min_y;
+//    self.titleLabel.frame = BAKit_CGRectFlatMake(min_x, min_y, min_w, min_h);
+    
     
     min_x = view_w - self.ba_gridView_lineWidth;
     min_y = 0;

@@ -11,6 +11,7 @@
 * 3、自定义文字图片 或者 两行文字样式<br>
 * 4、自定义分割线：显示/隐藏<br>
 * 5、自定义分割线：颜色<br>
+* 6、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 
 ## 2、图片示例
 ![BAGridView1](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView1.png)
@@ -53,6 +54,11 @@
  
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAButton
+ 
+ 最新更新时间：2017-06-21 【倒叙】<br>
+ 最新Version：【Version：1.0.1】<br>
+ 更新内容：<br>
+ 1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-20 【倒叙】<br>
  最新Version：【Version：1.0.0】<br>
@@ -119,12 +125,17 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 @property(nonatomic, copy)   BAGridViewBlock ba_gridViewBlock;
 
 /**
- item：高度
+ item：高度，图片高度 默认：ba_gridView_itemHeight * 0.4
  */
 @property(nonatomic, assign) CGFloat ba_gridView_itemHeight;
 
 /**
- item：每行 item 的个数，默认为4个
+ item：图片与文字间距（或者两行文字类型的间距），默认：0
+ */
+@property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
+
+/**
+ item：每行 item 的个数，默认：4个
  */
 @property(nonatomic, assign) NSInteger ba_gridView_rowCount;
 
@@ -148,6 +159,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  */
 @property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;
 
+@property(nonatomic, assign) CGFloat ba_gridView_imageH;
 
 /**
  快速创建宫格
@@ -170,6 +182,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 ### demo 示例
 ```
 // 示例1：
+
 - (BAGridView *)gridView
 {
     if (!_gridView)
@@ -177,13 +190,15 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
         _gridView = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeImageTitle dataArray:self.gridDataArray configurationBlock:^(BAGridView *tempView) {
             
             // 是否显示分割线
-            tempView.showLineView = NO;
+//            tempView.showLineView = NO;
             // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
 //            tempView.ba_gridView_lineColor = BAKit_Color_Red;
             // item：每行 item 的个数，默认为4个
             tempView.ba_gridView_rowCount = kGridView_rowCount;
             // item：高度
             tempView.ba_gridView_itemHeight = kGridView_itemHeight;
+            // item：图片与文字间距（或者两行文字类型的间距），默认：0
+//            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
 //            tempView.ba_gridView_titleColor = BAKit_Color_Black;
             
@@ -225,8 +240,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 {
     if (!_gridView2)
     {
-        _gridView2 = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeTitleDesc
-                                                        dataArray:self.gridDataArray2 configurationBlock:^(BAGridView *tempView) {
+        _gridView2 = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeTitleDesc dataArray:self.gridDataArray2 configurationBlock:^(BAGridView *tempView) {
                                                             
             // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
             tempView.ba_gridView_lineColor = BAKit_Color_Red;
@@ -234,6 +248,8 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
             tempView.ba_gridView_rowCount = kGridView_rowCount2;
             // item：高度
             tempView.ba_gridView_itemHeight = kGridView_itemHeight2;
+            // item：图片与文字间距（或者两行文字类型的间距），默认：0
+//            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
             tempView.ba_gridView_titleColor = BAKit_Color_Black;
             //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
@@ -278,7 +294,12 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
  
-  最新更新时间：2017-06-20 【倒叙】<br>
+ 最新更新时间：2017-06-21 【倒叙】<br>
+ 最新Version：【Version：1.0.1】<br>
+ 更新内容：<br>
+ 1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 
+ 最新更新时间：2017-06-20 【倒叙】<br>
  最新Version：【Version：1.0.0】<br>
  更新内容：<br>
  1.0.0.1、支付宝首页 九宫格 布局封装<br>

@@ -106,12 +106,17 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 @property(nonatomic, copy)   BAGridViewBlock ba_gridViewBlock;
 
 /**
- item：高度
+ item：高度，图片高度 默认：ba_gridView_itemHeight * 0.4
  */
 @property(nonatomic, assign) CGFloat ba_gridView_itemHeight;
 
 /**
- item：每行 item 的个数，默认为4个
+ item：图片与文字间距（或者两行文字类型的间距），默认：0
+ */
+@property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
+
+/**
+ item：每行 item 的个数，默认：4个
  */
 @property(nonatomic, assign) NSInteger ba_gridView_rowCount;
 
@@ -135,6 +140,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  */
 @property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;
 
+@property(nonatomic, assign) CGFloat ba_gridView_imageH;
 
 /**
  快速创建宫格

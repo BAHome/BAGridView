@@ -92,6 +92,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     self.ba_gridView_lineWidth = BAKit_Flat(0.5f);
     self.ba_gridView_titleColor = BAKit_Color_Black;
     self.ba_gridView_titleDescColor = BAKit_Color_Gray_9;
+    self.ba_gridView_itemImageInset = 0;
 }
 
 - (void)layoutSubviews
@@ -115,10 +116,12 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
         cell.backgroundColor = BAKit_Color_Clear;
+        
         cell.model = self.dataArray[indexPath.row];
         cell.ba_gridView_titleColor = self.ba_gridView_titleColor;
         cell.ba_gridView_lineColor = self.ba_gridView_lineColor;
         cell.ba_gridView_lineWidth = self.ba_gridView_lineWidth;
+        cell.ba_gridView_itemImageInset = self.ba_gridView_itemImageInset;
         
         return cell;
     }
@@ -126,12 +129,14 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     {
         cell2 = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID2 forIndexPath:indexPath];
         cell2.backgroundColor = BAKit_Color_Clear;
+        
         cell2.model = self.dataArray[indexPath.row];
         cell2.ba_gridView_titleColor = self.ba_gridView_titleColor;
         cell2.ba_gridView_titleDescColor = self.ba_gridView_titleDescColor;
         cell2.ba_gridView_lineColor = self.ba_gridView_lineColor;
         cell2.ba_gridView_lineWidth = self.ba_gridView_lineWidth;
-
+        cell2.ba_gridView_itemImageInset = self.ba_gridView_itemImageInset;
+        
         return cell2;
     }
     
@@ -153,8 +158,6 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return (CGSizeMake(self.gridItem_w, self.ba_gridView_itemHeight));
-
-//    return BAKit_CGSizeFlatted(CGSizeMake(self.gridItem_w, self.ba_gridView_itemHeight));
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -221,21 +224,24 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 - (void)setBa_gridView_titleColor:(UIColor *)ba_gridView_titleColor
 {
     _ba_gridView_titleColor = ba_gridView_titleColor;
-    
     [self.collectionView reloadData];
 }
 
 - (void)setBa_gridView_titleDescColor:(UIColor *)ba_gridView_titleDescColor
 {
     _ba_gridView_titleDescColor = ba_gridView_titleDescColor;
-    
     [self.collectionView reloadData];
 }
 
 - (void)setBa_gridView_lineColor:(UIColor *)ba_gridView_lineColor
 {
     _ba_gridView_lineColor = ba_gridView_lineColor;
-    
+    [self.collectionView reloadData];
+}
+
+- (void)setBa_gridView_itemImageInset:(CGFloat)ba_gridView_itemImageInset
+{
+    _ba_gridView_itemImageInset = ba_gridView_itemImageInset;
     [self.collectionView reloadData];
 }
 

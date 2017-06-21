@@ -77,6 +77,11 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAButton
  
+ 最新更新时间：2017-06-21 【倒叙】<br>
+ 最新Version：【Version：1.0.1】<br>
+ 更新内容：<br>
+ 1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 
  最新更新时间：2017-06-20 【倒叙】<br>
  最新Version：【Version：1.0.0】<br>
  更新内容：<br>
