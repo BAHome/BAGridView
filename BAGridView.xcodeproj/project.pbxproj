@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4738C2F1EFCB91400608E17 /* BAKit_ConfigurationDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_ConfigurationDefine.h; sourceTree = "<group>"; };
 		C4A26ACB1EEE441200514665 /* BAGridView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAGridView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A26ACF1EEE441200514665 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C4A26AD11EEE441200514665 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		C4A26AEC1EEE44B800514665 /* BAGridViewTypeTitleDescCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGridViewTypeTitleDescCell.h; sourceTree = "<group>"; };
 		C4A26AED1EEE44B800514665 /* BAGridViewTypeTitleDescCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAGridViewTypeTitleDescCell.m; sourceTree = "<group>"; };
 		C4A26AF21EEE44EB00514665 /* BAKit_BAGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_BAGridView.h; sourceTree = "<group>"; };
-		C4A26AF31EEE459400514665 /* BAKit_ConfigurationDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_ConfigurationDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A26AF21EEE44EB00514665 /* BAKit_BAGridView.h */,
-				C4A26AF31EEE459400514665 /* BAKit_ConfigurationDefine.h */,
+				C4738C2F1EFCB91400608E17 /* BAKit_ConfigurationDefine.h */,
 				C4A26AE61EEE44B800514665 /* BAGridCollectionCell.h */,
 				C4A26AE71EEE44B800514665 /* BAGridCollectionCell.m */,
 				C4A26AE81EEE44B800514665 /* BAGridItemModel.h */,

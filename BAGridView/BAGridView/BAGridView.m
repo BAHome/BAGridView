@@ -90,7 +90,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     
     self.ba_gridView_rowCount = 4;
     self.ba_gridView_lineColor = BAKit_Color_Gray_10;
-    self.ba_gridView_lineWidth = BAKit_Flat(0.5f);
+    self.ba_gridView_lineWidth = BAKit_Flat_pod(0.5f);
     self.ba_gridView_titleColor = BAKit_Color_Black;
     self.ba_gridView_titleDescColor = BAKit_Color_Gray_9;
     self.ba_gridView_itemImageInset = 0;

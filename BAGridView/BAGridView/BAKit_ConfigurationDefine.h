@@ -126,8 +126,30 @@
 #endif
 #endif
 
+/*! 获取sharedApplication */
+#define BAKit_SharedApplication    [UIApplication sharedApplication]
+
+// 操作系统版本号
+#define BAKit_IOS_VERSION ([[[UIDevice currentDevice] systemVersion] floatValue])
+
+/*! 主线程同步队列 */
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
+/*! 主线程异步队列 */
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
 
 #pragma mark - runtime
+#import <objc/runtime.h>
 /*! runtime set */
 #define BAKit_Objc_setObj(key, value) objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 
@@ -138,7 +160,15 @@
 #define BAKit_Objc_getObj objc_getAssociatedObject(self, _cmd)
 
 /*! runtime exchangeMethod */
-#define BAKit_Objc_exchangeMethodAToB(methodA,methodB) method_exchangeImplementations(class_getInstanceMethod([self class], methodA), class_getInstanceMethod([self class], methodB));
+#define BAKit_Objc_exchangeMethodAToB(originalSelector,swizzledSelector) { \
+Method originalMethod = class_getInstanceMethod(self, originalSelector); \
+Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector); \
+if (class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) { \
+class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod)); \
+} else { \
+method_exchangeImplementations(originalMethod, swizzledMethod); \
+} \
+}
 
 #pragma mark - 简单警告框
 /*! view 用 BAKit_ShowAlertWithMsg */
@@ -149,16 +179,43 @@ UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确 定" style:UIAl
 [alert addAction:sureAction];\
 [self presentViewController:alert animated:YES completion:nil];
 
-
+#pragma mark - color
 CG_INLINE UIColor *
-BAKit_Color_RGBA(u_char r,u_char g, u_char b, u_char a) {
+BAKit_Color_RGBA_pod(u_char r,u_char g, u_char b, u_char a) {
     return [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a];
 }
 
 CG_INLINE UIColor *
-BAKit_Color_RGB(u_char r,u_char g, u_char b) {
-    return BAKit_Color_RGBA(r, g, b, 1.0);
+BAKit_Color_RGB_pod(u_char r,u_char g, u_char b) {
+    return BAKit_Color_RGBA_pod(r, g, b, 1.0);
 }
+
+CG_INLINE UIColor *
+BAKit_Color_RGBValue_pod(UInt32 rgbValue){
+    return [UIColor colorWithRed:((rgbValue & 0xff0000) >> 16) / 255.0f
+                           green:((rgbValue & 0xff00) >> 8) / 255.0f
+                            blue:(rgbValue  & 0xff) / 255.0f
+                           alpha:1.0f];
+}
+
+CG_INLINE UIColor *
+BAKit_Color_RGBAValue_pod(UInt32 rgbaValue){
+    return [UIColor colorWithRed:((rgbaValue & 0xff000000) >> 24) / 255.0f
+                           green:((rgbaValue & 0xff0000) >> 16) / 255.0f
+                            blue:((rgbaValue & 0xff00) >> 8) / 255.0f
+                           alpha:(rgbaValue  & 0xff) / 255.0f];
+}
+
+CG_INLINE UIColor *
+BAKit_Color_RandomRGB_pod(){
+    return BAKit_Color_RGBValue_pod(arc4random_uniform(0xffffff));
+}
+
+CG_INLINE UIColor *
+BAKit_Color_RandomRGBA_pod(){
+    return BAKit_Color_RGBAValue_pod(arc4random_uniform(0xffffffff));
+}
+
 
 #define BAKit_Color_Translucent    [UIColor colorWithRed:0.3f green:0.3f blue:0.3f alpha:0.5f]
 #define BAKit_Color_White          [UIColor whiteColor]
@@ -166,22 +223,56 @@ BAKit_Color_RGB(u_char r,u_char g, u_char b) {
 #define BAKit_Color_Black          [UIColor blackColor]
 #define BAKit_Color_White          [UIColor whiteColor]
 #define BAKit_Color_Red            [UIColor redColor]
+#define BAKit_Color_Green          [UIColor greenColor]
+#define BAKit_Color_Orange         [UIColor orangeColor]
+#define BAKit_Color_Yellow         [UIColor yellowColor]
+
 
 /*! 灰色 */
-#define BAKit_Color_Gray_1  BAKit_Color_RGB(53, 60, 70);
-#define BAKit_Color_Gray_2  BAKit_Color_RGB(73, 80, 90);
-#define BAKit_Color_Gray_3  BAKit_Color_RGB(93, 100, 110);
-#define BAKit_Color_Gray_4  BAKit_Color_RGB(113, 120, 130);
-#define BAKit_Color_Gray_5  BAKit_Color_RGB(133, 140, 150);
-#define BAKit_Color_Gray_6  BAKit_Color_RGB(153, 160, 170);
-#define BAKit_Color_Gray_7  BAKit_Color_RGB(173, 180, 190);
-#define BAKit_Color_Gray_8  BAKit_Color_RGB(196, 200, 208);
-#define BAKit_Color_Gray_9  BAKit_Color_RGB(216, 220, 228);
-#define BAKit_Color_Gray_10 BAKit_Color_RGB(240, 240, 240);
-#define BAKit_Color_Gray_11 BAKit_Color_RGB(248, 248, 248);
+#define BAKit_Color_Gray_1  BAKit_Color_RGB_pod(53, 60, 70);
+#define BAKit_Color_Gray_2  BAKit_Color_RGB_pod(73, 80, 90);
+#define BAKit_Color_Gray_3  BAKit_Color_RGB_pod(93, 100, 110);
+#define BAKit_Color_Gray_4  BAKit_Color_RGB_pod(113, 120, 130);
+#define BAKit_Color_Gray_5  BAKit_Color_RGB_pod(133, 140, 150);
+#define BAKit_Color_Gray_6  BAKit_Color_RGB_pod(153, 160, 170);
+#define BAKit_Color_Gray_7  BAKit_Color_RGB_pod(173, 180, 190);
+#define BAKit_Color_Gray_8  BAKit_Color_RGB_pod(196, 200, 208);
+#define BAKit_Color_Gray_9  BAKit_Color_RGB_pod(216, 220, 228);
+#define BAKit_Color_Gray_10 BAKit_Color_RGB_pod(240, 240, 240);
+#define BAKit_Color_Gray_11 BAKit_Color_RGB_pod(248, 248, 248);
+
+#pragma mark - Margin
+#define BAKit_Margin_1       BAKit_Flat_pod(1)
+#define BAKit_Margin_2       BAKit_Flat_pod(2)
+#define BAKit_Margin_5       BAKit_Flat_pod(5)
+#define BAKit_Margin_10      BAKit_Flat_pod(10)
+#define BAKit_Margin_15      BAKit_Flat_pod(15)
+#define BAKit_Margin_20      BAKit_Flat_pod(20)
+#define BAKit_Margin_25      BAKit_Flat_pod(25)
+#define BAKit_Margin_30      BAKit_Flat_pod(30)
+#define BAKit_Margin_35      BAKit_Flat_pod(35)
+#define BAKit_Margin_40      BAKit_Flat_pod(40)
+#define BAKit_Margin_44      BAKit_Flat_pod(44)
+#define BAKit_Margin_50      BAKit_Flat_pod(50)
+#define BAKit_Margin_100     BAKit_Flat_pod(100)
+#define BAKit_Margin_150     BAKit_Flat_pod(150)
 
 
-#define BAKit_ImageName(imageName)  [UIImage imageNamed:imageName]
+#define BAKit_ImageName(imageName) [UIImage imageNamed:imageName]
+
+#pragma mark - NotiCenter other
+#define BAKit_NotiCenter [NSNotificationCenter defaultCenter]
+
+#define BAKit_NSUserDefaults [NSUserDefaults standardUserDefaults]
+
+/*! 获取sharedApplication */
+#define BAKit_SharedApplication    [UIApplication sharedApplication]
+
+/*! 用safari打开URL */
+#define BAKit_OpenUrl(urlStr)      [BAKit_SharedApplication openURL:[NSURL URLWithString:urlStr]]
+
+/*! 复制文字内容 */
+#define BAKit_CopyContent(content) [[UIPasteboard generalPasteboard] setString:content]
 
 
 /*!
@@ -203,13 +294,25 @@ BAKit_Color_RGB(u_char r,u_char g, u_char b) {
 
 #define BAKit_ScreenScale ([[UIScreen mainScreen] scale])
 
+CG_INLINE BOOL
+BAKit_stringIsBlank_pod(NSString *string) {
+    NSCharacterSet *blank = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    for (NSInteger i = 0; i < string.length; ++i) {
+        unichar c = [string characterAtIndex:i];
+        if (![blank characterIsMember:c]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 /**
  *  基于指定的倍数，对传进来的 floatValue 进行像素取整。若指定倍数为0，则表示以当前设备的屏幕倍数为准。
  *
  *  例如传进来 “2.1”，在 2x 倍数下会返回 2.5（0.5pt 对应 1px），在 3x 倍数下会返回 2.333（0.333pt 对应 1px）。
  */
 CG_INLINE CGFloat
-BAKit_FlatSpecificScale(CGFloat floatValue, CGFloat scale) {
+BAKit_FlatSpecificScale_pod(CGFloat floatValue, CGFloat scale) {
     scale = scale == 0 ? BAKit_ScreenScale : scale;
     CGFloat flattedValue = ceil(floatValue * scale) / scale;
     return flattedValue;
@@ -221,20 +324,20 @@ BAKit_FlatSpecificScale(CGFloat floatValue, CGFloat scale) {
  *  注意如果在 Core Graphic 绘图里使用时，要注意当前画布的倍数是否和设备屏幕倍数一致，若不一致，不可使用 flat() 函数，而应该用 flatSpecificScale
  */
 CG_INLINE CGFloat
-BAKit_Flat(CGFloat floatValue) {
-    return BAKit_FlatSpecificScale(floatValue, 0);
+BAKit_Flat_pod(CGFloat floatValue) {
+    return BAKit_FlatSpecificScale_pod(floatValue, 0);
 }
 
 /// 将一个CGSize像素对齐
 CG_INLINE CGSize
-BAKit_CGSizeFlatted(CGSize size) {
-    return CGSizeMake(BAKit_Flat(size.width), BAKit_Flat(size.height));
+BAKit_CGSizeFlatted_pod(CGSize size) {
+    return CGSizeMake(BAKit_Flat_pod(size.width), BAKit_Flat_pod(size.height));
 }
 
 /// 创建一个像素对齐的CGRect
 CG_INLINE CGRect
-BAKit_CGRectFlatMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height) {
-    return CGRectMake(BAKit_Flat(x), BAKit_Flat(y), BAKit_Flat(width), BAKit_Flat(height));
+BAKit_CGRectFlatMake_pod(CGFloat x, CGFloat y, CGFloat width, CGFloat height) {
+    return CGRectMake(BAKit_Flat_pod(x), BAKit_Flat_pod(y), BAKit_Flat_pod(width), BAKit_Flat_pod(height));
 }
 
 /**
@@ -245,7 +348,7 @@ BAKit_CGRectFlatMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height) {
  @return 列数
  */
 CG_INLINE NSInteger
-BAKit_getColumnCountWithArrayAndRowCount(NSArray *array, NSInteger rowCount){
+BAKit_getColumnCountWithArrayAndRowCount_pod(NSArray *array, NSInteger rowCount){
     NSUInteger count = array.count;
     
     NSUInteger i = 0;

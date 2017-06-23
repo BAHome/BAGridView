@@ -13,11 +13,11 @@ static NSString * const kCellID = @"ViewControllerCell";
 
 #define kGridView_rowCount   4
 #define kGridView_itemHeight 100
-#define kGridView_H          BAKit_getColumnCountWithArrayAndRowCount(self.gridDataArray, kGridView_rowCount) * kGridView_itemHeight
+#define kGridView_H          BAKit_getColumnCountWithArrayAndRowCount_pod(self.gridDataArray, kGridView_rowCount) * kGridView_itemHeight
 
 #define kGridView_rowCount2   2
 #define kGridView_itemHeight2 80
-#define kGridView_H2          BAKit_getColumnCountWithArrayAndRowCount(self.gridDataArray2, kGridView_rowCount2) * kGridView_itemHeight2
+#define kGridView_H2          BAKit_getColumnCountWithArrayAndRowCount_pod(self.gridDataArray2, kGridView_rowCount2) * kGridView_itemHeight2
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
