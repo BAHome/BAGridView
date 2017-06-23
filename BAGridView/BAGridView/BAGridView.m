@@ -178,8 +178,12 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
             indexPath:(NSIndexPath *)indexPath
              selected:(BOOL)selected
 {
-    [UIView animateWithDuration:0.25f animations:^{
+    [UIView animateWithDuration:0.20f animations:^{
         ((UICollectionViewCell *)cell).backgroundColor = selected ? self.ba_gridView_selectedBackgroundColor : self.ba_gridView_backgroundColor;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.08f animations:^{
+            ((UICollectionViewCell *)cell).backgroundColor = self.backgroundColor;
+        }];
     }];
 
     self.selectIndexPath = indexPath;

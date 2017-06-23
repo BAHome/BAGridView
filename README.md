@@ -57,6 +57,11 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
  
+ 最新更新时间：2017-06-23 【倒叙】<br>
+ 最新Version：【Version：1.0.3】<br>
+ 更新内容：<br>
+ 1.0.3.1、新增 支持 自定义 item 选中改变颜色后自动还原背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 
  最新更新时间：2017-06-21 【倒叙】<br>
  最新Version：【Version：1.0.2】<br>
  更新内容：<br>
@@ -328,6 +333,11 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 ## 5、更新记录：【倒叙】
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
+ 
+ 最新更新时间：2017-06-23 【倒叙】<br>
+ 最新Version：【Version：1.0.3】<br>
+ 更新内容：<br>
+ 1.0.3.1、新增 支持 自定义 item 选中改变颜色后自动还原背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-21 【倒叙】<br>
  最新Version：【Version：1.0.1】<br>
