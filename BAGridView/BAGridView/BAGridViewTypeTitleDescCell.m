@@ -36,8 +36,8 @@
     self.titleLabel.hidden = NO;
     self.descLabel.hidden = NO;
     
-    self.lineView_w.backgroundColor = BAKit_Color_Gray_11;
-    self.lineView_h.backgroundColor = BAKit_Color_Gray_11;
+    self.lineView_w.backgroundColor = BAKit_Color_Gray_11_pod;
+    self.lineView_h.backgroundColor = BAKit_Color_Gray_11_pod;
 }
 
 - (void)layoutSubviews

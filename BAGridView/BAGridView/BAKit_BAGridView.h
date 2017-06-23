@@ -78,6 +78,11 @@
  OC 版 ：https://github.com/BAHome/BAGridView
  
  最新更新时间：2017-06-23 【倒叙】
+ 最新Version：【Version：1.0.5】
+ 更新内容：
+ 1.0.5.1、优化部分宏定义
+ 
+ 最新更新时间：2017-06-23 【倒叙】
  最新Version：【Version：1.0.4】
  更新内容：
  1.0.4.1、优化部分宏定义

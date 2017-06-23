@@ -47,7 +47,7 @@ static NSString * const kCellID = @"ViewControllerCell";
 - (void)setupUI
 {
     self.title = @"BAGridView";
-    self.view.backgroundColor = BAKit_Color_White;
+    self.view.backgroundColor = BAKit_Color_White_pod;
 
 }
 
@@ -144,7 +144,7 @@ static NSString * const kCellID = @"ViewControllerCell";
     if (!_tableView)
     {
         _tableView = [[UITableView alloc] init];
-        self.tableView.backgroundColor = BAKit_Color_Gray_11;
+        self.tableView.backgroundColor = BAKit_Color_Gray_11_pod;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
@@ -188,7 +188,7 @@ static NSString * const kCellID = @"ViewControllerCell";
             // item：背景颜色，默认：BAKit_Color_White
             tempView.ba_gridView_backgroundColor = [UIColor yellowColor];
             // item：背景选中颜色，默认：无色
-            tempView.ba_gridView_selectedBackgroundColor = BAKit_Color_Red;
+            tempView.ba_gridView_selectedBackgroundColor = BAKit_Color_Red_pod;
             
             self.gridView = tempView;
             
@@ -207,7 +207,7 @@ static NSString * const kCellID = @"ViewControllerCell";
         _gridView2 = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeTitleDesc dataArray:self.gridDataArray2 configurationBlock:^(BAGridView *tempView) {
                                                             
             // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
-            tempView.ba_gridView_lineColor = BAKit_Color_Red;
+            tempView.ba_gridView_lineColor = BAKit_Color_Red_pod;
             // item：每行 item 的个数，默认为4个
             tempView.ba_gridView_rowCount = kGridView_rowCount2;
             // item：高度
@@ -215,9 +215,9 @@ static NSString * const kCellID = @"ViewControllerCell";
             // item：图片与文字间距（或者两行文字类型的间距），默认：0
 //            tempView.ba_gridView_itemImageInset = 10;
             //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
-            tempView.ba_gridView_titleColor = BAKit_Color_Black;
+            tempView.ba_gridView_titleColor = BAKit_Color_Black_pod;
             //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
-            tempView.ba_gridView_titleDescColor = BAKit_Color_Gray_7;
+            tempView.ba_gridView_titleDescColor = BAKit_Color_Gray_7_pod;
             // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
             tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
             // item：Desc Font，默认：两行文字下 12

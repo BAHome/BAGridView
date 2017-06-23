@@ -82,19 +82,19 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 
 - (void)setupUI
 {
-    self.backgroundColor = BAKit_Color_Clear;
+    self.backgroundColor = BAKit_Color_Clear_pod;
     self.collectionView.hidden = NO;
     
     // 默认配置
     self.gridViewType = BAGridViewTypeImageTitle;
     
     self.ba_gridView_rowCount = 4;
-    self.ba_gridView_lineColor = BAKit_Color_Gray_10;
+    self.ba_gridView_lineColor = BAKit_Color_Gray_10_pod;
     self.ba_gridView_lineWidth = BAKit_Flat_pod(0.5f);
-    self.ba_gridView_titleColor = BAKit_Color_Black;
-    self.ba_gridView_titleDescColor = BAKit_Color_Gray_9;
+    self.ba_gridView_titleColor = BAKit_Color_Black_pod;
+    self.ba_gridView_titleDescColor = BAKit_Color_Gray_9_pod;
     self.ba_gridView_itemImageInset = 0;
-    self.ba_gridView_backgroundColor = BAKit_Color_White;
+    self.ba_gridView_backgroundColor = BAKit_Color_White_pod;
 }
 
 - (void)layoutSubviews
@@ -118,7 +118,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     if (self.gridViewType == BAGridViewTypeImageTitle)
     {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
-        cell.backgroundColor = BAKit_Color_Clear;
+        cell.backgroundColor = BAKit_Color_Clear_pod;
         
         cell.model = self.dataArray[indexPath.row];
         cell.ba_gridView_titleColor = self.ba_gridView_titleColor;
@@ -132,7 +132,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     else if (self.gridViewType == BAGridViewTypeTitleDesc)
     {
         cell2 = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID2 forIndexPath:indexPath];
-        cell2.backgroundColor = BAKit_Color_Clear;
+        cell2.backgroundColor = BAKit_Color_Clear_pod;
         
         cell2.model = self.dataArray[indexPath.row];
         cell2.ba_gridView_titleColor = self.ba_gridView_titleColor;
@@ -209,7 +209,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         flowLayout.minimumInteritemSpacing = 0;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-        _collectionView.backgroundColor = BAKit_Color_Clear;
+        _collectionView.backgroundColor = BAKit_Color_Clear_pod;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.scrollEnabled = NO;

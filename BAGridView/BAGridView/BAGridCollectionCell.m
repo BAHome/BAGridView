@@ -36,8 +36,8 @@
     self.titleLabel.hidden = NO;
     self.imageView.hidden = NO;
     
-    self.lineView_w.backgroundColor = BAKit_Color_Gray_11;
-    self.lineView_h.backgroundColor = BAKit_Color_Gray_11;
+    self.lineView_w.backgroundColor = BAKit_Color_Gray_11_pod;
+    self.lineView_h.backgroundColor = BAKit_Color_Gray_11_pod;
 }
 
 - (void)layoutSubviews
@@ -95,7 +95,7 @@
     if (!_imageView)
     {
         _imageView = [UIImageView new];
-        _imageView.backgroundColor = BAKit_Color_Clear;
+        _imageView.backgroundColor = BAKit_Color_Clear_pod;
         
         [self.contentView addSubview:_imageView];
     }
