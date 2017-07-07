@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A316B0E73D5B0FC5967A7139 /* libPods-BAGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E1C091A3BCD24DEFBBAF44 /* libPods-BAGridView.a */; };
+		C4250DE31F0F1760002BE59A /* NSString+BAGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4250DE21F0F1760002BE59A /* NSString+BAGridView.m */; };
 		C4A26AD01EEE441200514665 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A26ACF1EEE441200514665 /* main.m */; };
 		C4A26AD31EEE441200514665 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A26AD21EEE441200514665 /* AppDelegate.m */; };
 		C4A26AD61EEE441200514665 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A26AD51EEE441200514665 /* ViewController.m */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57EBB2E5466161B1026BA0F9 /* Pods-BAGridView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAGridView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BAGridView/Pods-BAGridView.debug.xcconfig"; sourceTree = "<group>"; };
+		65E1C091A3BCD24DEFBBAF44 /* libPods-BAGridView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BAGridView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4250DE11F0F1760002BE59A /* NSString+BAGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BAGridView.h"; sourceTree = "<group>"; };
+		C4250DE21F0F1760002BE59A /* NSString+BAGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BAGridView.m"; sourceTree = "<group>"; };
 		C4738C2F1EFCB91400608E17 /* BAKit_ConfigurationDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_ConfigurationDefine.h; sourceTree = "<group>"; };
 		C4A26ACB1EEE441200514665 /* BAGridView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAGridView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A26ACF1EEE441200514665 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +46,7 @@
 		C4A26AEC1EEE44B800514665 /* BAGridViewTypeTitleDescCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGridViewTypeTitleDescCell.h; sourceTree = "<group>"; };
 		C4A26AED1EEE44B800514665 /* BAGridViewTypeTitleDescCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAGridViewTypeTitleDescCell.m; sourceTree = "<group>"; };
 		C4A26AF21EEE44EB00514665 /* BAKit_BAGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_BAGridView.h; sourceTree = "<group>"; };
+		FE40214FB4C04BA4644BFB6A /* Pods-BAGridView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAGridView.release.xcconfig"; path = "Pods/Target Support Files/Pods-BAGridView/Pods-BAGridView.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +54,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A316B0E73D5B0FC5967A7139 /* libPods-BAGridView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F7E1F2E8052120FCD005C75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65E1C091A3BCD24DEFBBAF44 /* libPods-BAGridView.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		977169734756A9E7FF359ECB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				57EBB2E5466161B1026BA0F9 /* Pods-BAGridView.debug.xcconfig */,
+				FE40214FB4C04BA4644BFB6A /* Pods-BAGridView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C4A26AC21EEE441100514665 = {
 			isa = PBXGroup;
 			children = (
 				C4A26ACD1EEE441200514665 /* BAGridView */,
 				C4A26ACC1EEE441200514665 /* Products */,
+				977169734756A9E7FF359ECB /* Pods */,
+				0F7E1F2E8052120FCD005C75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +134,8 @@
 				C4A26AEB1EEE44B800514665 /* BAGridView.m */,
 				C4A26AEC1EEE44B800514665 /* BAGridViewTypeTitleDescCell.h */,
 				C4A26AED1EEE44B800514665 /* BAGridViewTypeTitleDescCell.m */,
+				C4250DE11F0F1760002BE59A /* NSString+BAGridView.h */,
+				C4250DE21F0F1760002BE59A /* NSString+BAGridView.m */,
 			);
 			path = BAGridView;
 			sourceTree = "<group>";
@@ -118,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A26AE21EEE441200514665 /* Build configuration list for PBXNativeTarget "BAGridView" */;
 			buildPhases = (
+				488F96C45820907B46860692 /* [CP] Check Pods Manifest.lock */,
 				C4A26AC71EEE441200514665 /* Sources */,
 				C4A26AC81EEE441200514665 /* Frameworks */,
 				C4A26AC91EEE441200514665 /* Resources */,
+				E53D6BC6F63329855DFE51DE /* [CP] Embed Pods Frameworks */,
+				2C9FDE3CEBC1790F3D1DB51B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,6 +210,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2C9FDE3CEBC1790F3D1DB51B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BAGridView/Pods-BAGridView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		488F96C45820907B46860692 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BAGridView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E53D6BC6F63329855DFE51DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BAGridView/Pods-BAGridView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C4A26AC71EEE441200514665 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -190,6 +273,7 @@
 				C4A26AD01EEE441200514665 /* main.m in Sources */,
 				C4A26AEF1EEE44B800514665 /* BAGridItemModel.m in Sources */,
 				C4A26AF01EEE44B800514665 /* BAGridView.m in Sources */,
+				C4250DE31F0F1760002BE59A /* NSString+BAGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +391,7 @@
 		};
 		C4A26AE31EEE441200514665 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57EBB2E5466161B1026BA0F9 /* Pods-BAGridView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8JQ2PK6XN8;
@@ -320,6 +405,7 @@
 		};
 		C4A26AE41EEE441200514665 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE40214FB4C04BA4644BFB6A /* Pods-BAGridView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8JQ2PK6XN8;

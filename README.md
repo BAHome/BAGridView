@@ -14,7 +14,8 @@
 * 6、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 * 7、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 * 8、新增 支持 自定义 item 背景颜色 和 选中背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
-
+* 9、新增网络图片、placdholderImage功能，感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 
 ## 2、图片示例
 ![BAGridView1](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView1.png)
 ![BAGridView2](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView2.png)
@@ -56,6 +57,11 @@
  
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
+ 
+ 最新更新时间：2017-07-07 【倒叙】<br>
+ 最新Version：【Version：1.0.6】<br>
+ 更新内容：<br>
+ 1.0.6.1、新增网络图片、placdholderImage功能，感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-23 【倒叙】
  最新Version：【Version：1.0.5】
@@ -265,13 +271,16 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
     {
         _gridDataArray = @[].mutableCopy;
         
-        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
-        NSArray *titleArray = @[@"扫一扫", @"付钱", @"卡包", @"收银", @"卡包"];
+//        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
+        NSArray *imageNameArray = @[@"http://120.24.177.96:1525/images/20170706/b2acbae9-020c-4eaa-87b4-f7286ae69ba1.png", @"http://120.24.177.96:1525/images/20170706/ae3a4188-f01a-442e-aaf0-94739e30b698.png", @"http://120.24.177.96:1525/images/20170706/d4c88154-eaed-441a-8c8a-89d9a6d4755e.png", @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png", @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+
+        NSArray *titleArray = @[@"小区", @"商圈", @"社交", @"出行", @"武术"];
         
         for (NSInteger i = 0; i < titleArray.count; i++)
         {
             BAGridItemModel *model = [BAGridItemModel new];
             model.imageName = imageNameArray[i];
+            model.placdholderImageName = @"tabbar_mainframeHL";
             model.titleString = titleArray[i];
             
             [self.gridDataArray addObject:model];
@@ -344,15 +353,20 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
  
- 最新更新时间：2017-06-23 【倒叙】
- 最新Version：【Version：1.0.5】
- 更新内容：
- 1.0.5.1、优化部分宏定义
+ 最新更新时间：2017-07-07 【倒叙】<br>
+ 最新Version：【Version：1.0.6】<br>
+ 更新内容：<br>
+ 1.0.6.1、新增网络图片、placdholderImage功能，感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
- 最新更新时间：2017-06-23 【倒叙】
- 最新Version：【Version：1.0.4】
- 更新内容：
- 1.0.4.1、优化部分宏定义
+ 最新更新时间：2017-06-23 【倒叙】<br>
+ 最新Version：【Version：1.0.5】<br>
+ 更新内容：<br>
+ 1.0.5.1、优化部分宏定义<br>
+ 
+ 最新更新时间：2017-06-23 【倒叙】<br>
+ 最新Version：【Version：1.0.4】<br>
+ 更新内容：<br>
+ 1.0.4.1、优化部分宏定义<br>
  
  最新更新时间：2017-06-23 【倒叙】<br>
  最新Version：【Version：1.0.3】<br>

@@ -243,13 +243,16 @@ static NSString * const kCellID = @"ViewControllerCell";
     {
         _gridDataArray = @[].mutableCopy;
         
-        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
-        NSArray *titleArray = @[@"扫一扫", @"付钱", @"卡包", @"收银", @"卡包2"];
+//        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
+        NSArray *imageNameArray = @[@"http://120.24.177.96:1525/images/20170706/b2acbae9-020c-4eaa-87b4-f7286ae69ba1.png", @"http://120.24.177.96:1525/images/20170706/ae3a4188-f01a-442e-aaf0-94739e30b698.png", @"http://120.24.177.96:1525/images/20170706/d4c88154-eaed-441a-8c8a-89d9a6d4755e.png", @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png", @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+
+        NSArray *titleArray = @[@"小区", @"商圈", @"社交", @"出行", @"武术"];
         
         for (NSInteger i = 0; i < titleArray.count; i++)
         {
             BAGridItemModel *model = [BAGridItemModel new];
             model.imageName = imageNameArray[i];
+            model.placdholderImageName = @"tabbar_mainframeHL";
             model.titleString = titleArray[i];
             
             [self.gridDataArray addObject:model];
