@@ -14,7 +14,7 @@
 * 6、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 * 7、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
 * 8、新增 支持 自定义 item 背景颜色 和 选中背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
-* 9、新增网络图片、placdholderImage功能，感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+* 9、新增网络图片、placdholderImage功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
 ## 2、图片示例
 ![BAGridView1](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView1.png)
@@ -61,7 +61,7 @@
  最新更新时间：2017-07-07 【倒叙】<br>
  最新Version：【Version：1.0.6】<br>
  更新内容：<br>
- 1.0.6.1、新增网络图片、placdholderImage功能，感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 1.0.6.1、新增网络图片、placdholderImage功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-23 【倒叙】
  最新Version：【Version：1.0.5】
@@ -356,7 +356,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  最新更新时间：2017-07-07 【倒叙】<br>
  最新Version：【Version：1.0.6】<br>
  更新内容：<br>
- 1.0.6.1、新增网络图片、placdholderImage功能，感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
+ 1.0.6.1、新增网络图片、placdholderImage功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
  
  最新更新时间：2017-06-23 【倒叙】<br>
  最新Version：【Version：1.0.5】<br>
