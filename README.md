@@ -37,73 +37,6 @@
 ## 4、BAGridView 的类结构及 demo 示例
 ![BAGridView](https://github.com/BAHome/BAGridView/blob/master/Images/BAGridView.png)
 
-### BAKit_BAGridView.h
-```
-#ifndef BAKit_BAGridView_h
-#define BAKit_BAGridView_h
-
-#import "BAGridView.h"
-#import "BAGridItemModel.h"
-#import "BAKit_ConfigurationDefine.h"
-
-
-/*!
- *********************************************************************************
- ************************************ 更新说明 ************************************
- *********************************************************************************
- 
- 欢迎使用 BAHome 系列开源代码 ！
- 如有更多需求，请前往：https://github.com/BAHome
- 
- 项目源码地址：
- OC 版 ：https://github.com/BAHome/BAGridView
- 
- 最新更新时间：2017-07-07 【倒叙】<br>
- 最新Version：【Version：1.0.6】<br>
- 更新内容：<br>
- 1.0.6.1、新增网络图片、placdholderImage功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
- 
- 最新更新时间：2017-06-23 【倒叙】
- 最新Version：【Version：1.0.5】
- 更新内容：
- 1.0.5.1、优化部分宏定义
- 
- 最新更新时间：2017-06-23 【倒叙】
- 最新Version：【Version：1.0.4】
- 更新内容：
- 1.0.4.1、优化部分宏定义
- 
- 最新更新时间：2017-06-23 【倒叙】<br>
- 最新Version：【Version：1.0.3】<br>
- 更新内容：<br>
- 1.0.3.1、新增 支持 自定义 item 选中改变颜色后自动还原背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
- 
- 最新更新时间：2017-06-21 【倒叙】<br>
- 最新Version：【Version：1.0.2】<br>
- 更新内容：<br>
- 1.0.2.1、新增 支持 自定义 item 背景颜色 和 选中背景颜色（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
- 
- 最新更新时间：2017-06-21 【倒叙】<br>
- 最新Version：【Version：1.0.1】<br>
- 更新内容：<br>
- 1.0.1.1、新增 支持 自定义 图片文字间距功能（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
- 1.0.1.2、新增 自定义 所有文字字体（感谢群里 [@武汉-马阿飞](http://www.jianshu.com/u/7f8b1720f857) 同学提出的 需求！）<br>
- 
- 最新更新时间：2017-06-20 【倒叙】<br>
- 最新Version：【Version：1.0.0】<br>
- 更新内容：<br>
- 1.0.0.1、支付宝首页 九宫格 布局封装<br>
- 1.0.0.2、自适应按钮位置和数量<br>
- 1.0.0.3、自定义文字图片 或者 两行文字样式<br>
- 1.0.0.4、自定义分割线：显示/隐藏<br>
- 1.0.0.5、自定义分割线：颜色<br>
- 
- */
-
-#endif /* BAKit_BAGridView_h */
-
-```
-
 ### BAGridView.h
 ```
 #import <UIKit/UIKit.h>
@@ -353,6 +286,13 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
  
+  
+ 最新更新时间：2017-12-23 【倒叙】<br>
+ 最新Version：【Version：1.0.7】<br>
+ 更新内容：<br>
+ 1.0.7.1、新增图文样式下文字 title 内容可以显示最多两行！详见：demo 1<br>
+ 1.0.7.2、新增 BAGridView_Version.h 类，版本更新分离更易读！<br>
+
  最新更新时间：2017-07-07 【倒叙】<br>
  最新Version：【Version：1.0.6】<br>
  更新内容：<br>
@@ -389,7 +329,7 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  1.0.0.5、自定义分割线：颜色<br>
 
 ## 6、bug 反馈
-> 1、开发中遇到 bug，希望小伙伴儿们能够及时反馈与我们 BAHome 团队，我们必定会认真对待每一个问题！ <br>
+> 1、开发中遇到 bug，希望小伙伴儿们能够及时反馈与我们 [BAHome](https://github.com/BAHome) 团队，我们必定会认真对待每一个问题！ <br>
 
 > 2、以后提需求和 bug 的同学，记得把 git 或者博客链接给我们，我直接超链到你们那里！希望大家积极参与测试！<br> 
 
@@ -433,7 +373,7 @@ git：[https://github.com/CrazyCoderShi](https://github.com/CrazyCoderShi) <br>
 > 开发使用 最新版本 Xcode，理论上支持 iOS 8 及以上版本，如有版本适配问题，请及时反馈！多谢合作！
 
 ## 9、感谢
-> 感谢 BAHome 团队成员倾力合作，后期会推出一系列 常用 UI 控件的封装，大家有需求得也可以在 issue 提出，如果合理，我们会尽快推出新版本！<br>
+> 感谢 [BAHome](https://github.com/BAHome) 团队成员倾力合作，后期会推出一系列 常用 UI 控件的封装，大家有需求得也可以在 issue 提出，如果合理，我们会尽快推出新版本！<br>
 
-> BAHome 的发展离不开小伙伴儿的信任与推广，再次感谢各位小伙伴儿的支持！
+> [BAHome](https://github.com/BAHome) 的发展离不开小伙伴儿的信任与推广，再次感谢各位小伙伴儿的支持！
 

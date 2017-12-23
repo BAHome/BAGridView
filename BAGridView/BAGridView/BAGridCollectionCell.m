@@ -88,6 +88,7 @@
         _titleLabel = [UILabel new];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.numberOfLines = 2;
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
