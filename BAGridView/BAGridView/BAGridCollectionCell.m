@@ -33,6 +33,7 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
 
 @interface BAGridCollectionCell ()
 
+@property(nonatomic, strong) UIImageView *bgImageView;
 @property(nonatomic, strong) UIImageView *imageView;
 @property(nonatomic, strong) UILabel *titleLabel;
 
@@ -54,6 +55,7 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
 
 - (void)setupUI
 {
+    self.bgImageView.hidden = NO;
     self.imageView.hidden = NO;
     self.titleLabel.hidden = NO;
     
@@ -70,7 +72,13 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
     CGFloat min_w = 0;
     CGFloat min_h = 0;
     
-    if (_config.gridViewType == BAGridViewTypeImageTitle)
+    min_x = 0;
+    min_y = 0;
+    min_w = view_h;
+    min_h = min_w;
+    self.bgImageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
+    
+    if (self.config.gridViewType == BAGridViewTypeImageTitle)
     {
         min_w = view_h * 0.4;
         min_h = min_w;
@@ -79,12 +87,12 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
         self.imageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
         
         min_x = 0;
-        min_y = CGRectGetMaxY(self.imageView.frame) + _config.ba_gridView_itemImageInset;
-        min_w = view_w - _config.ba_gridView_lineWidth;
+        min_y = CGRectGetMaxY(self.imageView.frame) + self.config.ba_gridView_itemImageInset;
+        min_w = view_w - self.config.ba_gridView_lineWidth;
         min_h = view_h - min_y;
         self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     }
-    else if (_config.gridViewType == BAGridViewTypeTitleImage)
+    else if (self.config.gridViewType == BAGridViewTypeTitleImage)
     {
         min_w = view_h * 0.4;
         min_h = min_w;
@@ -93,43 +101,53 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
         self.imageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
         
         min_x = 0;
-        min_w = view_w - _config.ba_gridView_lineWidth;
-        min_h = BAKit_LabelSizeWithTextAndWidthAndFont(_config.model.titleString, min_w, _config.ba_gridView_titleFont).height+3;
-        min_y = CGRectGetMinY(self.imageView.frame) - min_h - _config.ba_gridView_itemImageInset;
+        min_w = view_w - self.config.ba_gridView_lineWidth;
+        min_h = BAKit_LabelSizeWithTextAndWidthAndFont(self.config.model.titleString, min_w, self.config.ba_gridView_titleFont).height+3;
+        min_y = CGRectGetMinY(self.imageView.frame) - min_h - self.config.ba_gridView_itemImageInset;
         if (min_y < 0)
         {
             min_y = 0;
         }
         self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     }
-    else if (_config.gridViewType == BAGridViewTypeBgImageTitle)
+    else if (self.config.gridViewType == BAGridViewTypeBgImageTitle)
     {
-        min_w = view_h;
-        min_h = min_w;
-        min_x = 0;
-        min_y = 0;
-        self.imageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
-        
         min_x = 0;
         min_w = view_w;
-        min_h = BAKit_LabelSizeWithTextAndWidthAndFont(_config.model.titleString, min_w, _config.ba_gridView_titleFont).height+3;
+        min_h = BAKit_LabelSizeWithTextAndWidthAndFont(self.config.model.titleString, min_w, self.config.ba_gridView_titleFont).height+3;
         min_y = CGRectGetMidY(self.bounds) - min_h / 2;
         self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     }
     
-    min_x = view_w - _config.ba_gridView_lineWidth;
+    min_x = view_w - self.config.ba_gridView_lineWidth;
     min_y = 0;
-    min_w = _config.ba_gridView_lineWidth;
+    min_w = self.config.ba_gridView_lineWidth;
     min_h = view_h;
     self.lineView_h.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     
     min_x = 0;
-    min_y = view_h - _config.ba_gridView_lineWidth;
+    min_y = view_h - self.config.ba_gridView_lineWidth;
     min_w = view_w;
-    min_h = _config.ba_gridView_lineWidth;
+    min_h = self.config.ba_gridView_lineWidth;
     self.lineView_w.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
 }
+
 #pragma mark - setter / getter
+
+
+- (UIImageView *)bgImageView
+{
+    if (!_bgImageView)
+    {
+        _bgImageView = [UIImageView new];
+        _bgImageView.backgroundColor = BAKit_Color_Clear_pod;
+        _bgImageView.userInteractionEnabled = YES;
+        
+        [self.contentView addSubview:_bgImageView];
+    }
+    return _bgImageView;
+}
+
 - (UILabel *)titleLabel
 {
     if (!_titleLabel)
@@ -139,7 +157,7 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
         _titleLabel.font = [UIFont systemFontOfSize:16];
         _titleLabel.numberOfLines = 2;
         
-        [self.contentView addSubview:_titleLabel];
+        [_bgImageView addSubview:_titleLabel];
     }
     return _titleLabel;
 }
@@ -152,7 +170,7 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
         _imageView.backgroundColor = BAKit_Color_Clear_pod;
         _imageView.userInteractionEnabled = YES;
         
-        [self.contentView addSubview:_imageView];
+        [_bgImageView addSubview:_imageView];
     }
     return _imageView;
 }
@@ -163,7 +181,7 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
     {
         _lineView_w = [UIView new];
 
-        [self.contentView addSubview:_lineView_w];
+        [_bgImageView addSubview:_lineView_w];
     }
     return _lineView_w;
 }
@@ -174,22 +192,33 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
     {
         _lineView_h = [UIView new];
         
-        [self.contentView addSubview:_lineView_h];
+        [_bgImageView addSubview:_lineView_h];
     }
     return _lineView_h;
 }
 
-- (void)setConfig:(BAGridView_Config *)config {
+- (void)setConfig:(BAGridView_Config *)config
+{
     _config = config;
-    if ([NSString ba_regularIsUrl:_config.model.imageName])
+    
+    if (config.model.imageName.length > 0 && [NSString ba_regularIsUrl:config.model.imageName])
     {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:_config.model.imageName] placeholderImage:BAKit_ImageName(_config.model.placdholderImageName)];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:config.model.imageName] placeholderImage:BAKit_ImageName(config.model.placdholderImageName)];
     }
     else
     {
-        self.imageView.image = BAKit_ImageName(_config.model.imageName);
+        self.imageView.image = BAKit_ImageName(config.model.imageName);
     }
-    self.titleLabel.text = _config.model.titleString;
+    
+    if (config.model.bgImageName.length > 0 && [NSString ba_regularIsUrl:config.model.bgImageName])
+    {
+        [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:config.model.bgImageName] placeholderImage:BAKit_ImageName(config.model.placdholderImageName)];
+    }
+    else
+    {
+        self.bgImageView.image = BAKit_ImageName(config.model.bgImageName);
+    }
+    self.titleLabel.text = config.model.titleString;
     [self layoutView];
 }
 

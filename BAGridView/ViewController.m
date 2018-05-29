@@ -280,9 +280,11 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         // 也可以是网络图片
         
         NSArray *imageNameArray;
+        NSArray *bgImageNameArray;
+
         if (self.ba_GridViewConfig.gridViewType == BAGridViewTypeBgImageTitle)
         {
-            imageNameArray = @[@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+            bgImageNameArray = @[@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
                                @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
                                @"http://fc.topitme.com/c/08/e1/11235427029dbe108cm.jpg",
                                @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
@@ -296,12 +298,31 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
                                @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
                                @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
         }
+        
+        if (self.ba_GridViewConfig.gridViewType == BAGridViewTypeImageTitle || self.ba_GridViewConfig.gridViewType == BAGridViewTypeTitleImage)
+        {
+            bgImageNameArray = @[
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 ];
+        }
+        
         NSArray *titleArray = @[@"小区tabbar_main", @"商圈", @"社交57128423", @"出行", @"武术"];
         
         for (NSInteger i = 0; i < titleArray.count; i++)
         {
             BAGridItemModel *model = [BAGridItemModel new];
-            model.imageName = imageNameArray[i];
+            if (imageNameArray.count > 0)
+            {
+                model.imageName = imageNameArray[i];
+            }
+            if (bgImageNameArray.count > 0)
+            {
+                model.bgImageName = bgImageNameArray[i];
+            }
             model.placdholderImageName = @"tabbar_mainframeHL";
             model.titleString = titleArray[i];
             

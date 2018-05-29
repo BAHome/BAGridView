@@ -64,9 +64,14 @@
 
 
 /**
- 可为本地图片名、网络图片 URL
+ 图片，可为本地图片名、网络图片 URL
  */
 @property(nonatomic, copy) NSString *imageName;
+
+/**
+ 背景图片，可为本地图片名、网络图片 URL
+ */
+@property(nonatomic, copy) NSString *bgImageName;
 
 /**
  placdholder 图片名

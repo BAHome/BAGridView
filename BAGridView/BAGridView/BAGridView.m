@@ -69,6 +69,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         config = [[BAGridView_Config alloc] init];
     }
     tempView.config = config;
+    tempView.config.ba_gridViewBlock = block;
     [tempView setupUI];
     return tempView;
 }

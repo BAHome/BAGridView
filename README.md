@@ -93,21 +93,61 @@ block:(BAGridViewBlock)block;
     return _gridView;
 }
 
+
 - (NSMutableArray <BAGridItemModel *> *)gridDataArray
 {
     if (!_gridDataArray)
     {
         _gridDataArray = @[].mutableCopy;
         
+        // 可以为本地图片
 //        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
-        NSArray *imageNameArray = @[@"http://120.24.177.96:1525/images/20170706/b2acbae9-020c-4eaa-87b4-f7286ae69ba1.png", @"http://120.24.177.96:1525/images/20170706/ae3a4188-f01a-442e-aaf0-94739e30b698.png", @"http://120.24.177.96:1525/images/20170706/d4c88154-eaed-441a-8c8a-89d9a6d4755e.png", @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png", @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+        // 也可以是网络图片
+        
+        NSArray *imageNameArray;
+        NSArray *bgImageNameArray;
 
-        NSArray *titleArray = @[@"小区", @"商圈", @"社交", @"出行", @"武术"];
+        if (self.ba_GridViewConfig.gridViewType == BAGridViewTypeBgImageTitle)
+        {
+            bgImageNameArray = @[@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                               @"http://fc.topitme.com/c/08/e1/11235427029dbe108cm.jpg",
+                               @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
+                               @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+        }
+        else
+        {
+            imageNameArray = @[@"http://120.24.177.96:1525/images/20170706/b2acbae9-020c-4eaa-87b4-f7286ae69ba1.png",
+                               @"http://120.24.177.96:1525/images/20170706/ae3a4188-f01a-442e-aaf0-94739e30b698.png",
+                               @"http://120.24.177.96:1525/images/20170706/d4c88154-eaed-441a-8c8a-89d9a6d4755e.png",
+                               @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
+                               @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+        }
+        
+        if (self.ba_GridViewConfig.gridViewType == BAGridViewTypeImageTitle || self.ba_GridViewConfig.gridViewType == BAGridViewTypeTitleImage)
+        {
+            bgImageNameArray = @[
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                                 ];
+        }
+        
+        NSArray *titleArray = @[@"小区tabbar_main", @"商圈", @"社交57128423", @"出行", @"武术"];
         
         for (NSInteger i = 0; i < titleArray.count; i++)
         {
             BAGridItemModel *model = [BAGridItemModel new];
-            model.imageName = imageNameArray[i];
+            if (imageNameArray.count > 0)
+            {
+                model.imageName = imageNameArray[i];
+            }
+            if (bgImageNameArray.count > 0)
+            {
+                model.bgImageName = bgImageNameArray[i];
+            }
             model.placdholderImageName = @"tabbar_mainframeHL";
             model.titleString = titleArray[i];
             
@@ -186,6 +226,11 @@ block:(BAGridViewBlock)block;
 ## 5、更新记录：【倒叙】
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
+ 
+ 最新更新时间：2018-05-29 【倒叙】<br>
+ 最新Version：【Version：1.1.1】<br>
+ 更新内容：<br>
+ 1.1.1.1、优化部分代码，新增背景图片设置！详见：demo <br>
  
  最新更新时间：2018-05-28 【倒叙】<br>
  最新Version：【Version：1.1.0】<br>
