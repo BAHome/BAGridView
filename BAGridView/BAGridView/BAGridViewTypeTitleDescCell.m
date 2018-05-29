@@ -63,19 +63,6 @@
     min_h = view_h * 0.3;
     self.descLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     
-//    min_w = view_h * 0.4;
-//    min_h = min_w;
-//    min_x = (view_w - min_w) / 2;
-//    min_y = CGRectGetMidY(self.bounds) - min_w / 2 - view_h * 0.15;
-//    self.imageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
-//    
-//    min_x = 0;
-//    min_y = CGRectGetMaxY(self.imageView.frame) + self.ba_gridView_itemImageInset;
-//    min_w = view_w - self.ba_gridView_lineWidth;
-//    min_h = view_h - min_y;
-//    self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
-    
-    
     min_x = view_w - self.config.ba_gridView_lineWidth;
     min_y = 0;
     min_w = self.config.ba_gridView_lineWidth;
@@ -141,8 +128,18 @@
 
 - (void)setConfig:(BAGridView_Config *)config {
     _config = config;
-    self.descLabel.text = _config.model.desc;
-    self.titleLabel.text = _config.model.titleString;
+    
+    self.titleLabel.text = config.model.titleString;
+    self.titleLabel.font = config.ba_gridView_titleFont;
+    self.titleLabel.textColor = config.ba_gridView_titleColor;
+    
+    self.descLabel.text = config.model.desc;
+    self.descLabel.font = config.ba_gridView_titleDescFont;
+    self.descLabel.textColor = config.ba_gridView_titleDescColor;
+    
+    self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
+    self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
+
 }
 
 

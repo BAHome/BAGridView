@@ -18,9 +18,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, strong) BAGridView_Config *config;
-@property(nonatomic, assign) CGFloat gridItem_w;
 @property(nonatomic, weak) NSIndexPath  *selectIndexPath;
-
 
 @end
 
@@ -83,7 +81,11 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     {
         self.config.ba_gridView_lineWidth = 0;
     }
-    self.gridItem_w = (BAKit_SCREEN_WIDTH - (self.config.ba_gridView_rowCount - 1) * self.config.ba_gridView_lineWidth)/self.config.ba_gridView_rowCount;
+    
+    if (!self.config.ba_gridView_itemWidth)
+    {
+        self.config.ba_gridView_itemWidth = (BAKit_SCREEN_WIDTH - (self.config.ba_gridView_rowCount - 1) * self.config.ba_gridView_lineWidth)/self.config.ba_gridView_rowCount;
+    }
 }
 
 - (void)layoutSubviews
@@ -166,12 +168,12 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (CGSizeMake(self.gridItem_w, self.config.ba_gridView_itemHeight));
+    return (CGSizeMake(self.config.ba_gridView_itemWidth, self.config.ba_gridView_itemHeight));
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return self.config.ba_gridView_itemEdgeInsets;
 }
 
 #pragma mark - setter / getter
@@ -180,8 +182,8 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     if (!_collectionView)
     {
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-        flowLayout.minimumLineSpacing = 0;
-        flowLayout.minimumInteritemSpacing = 0;
+        flowLayout.minimumLineSpacing = self.config.minimumLineSpacing;
+        flowLayout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = BAKit_Color_Clear_pod;

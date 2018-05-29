@@ -12,11 +12,12 @@
 static NSString * const kCellID = @"ViewControllerCell";
 
 #define kGridView_rowCount   4
+//#define kGridView_itemWidth  100
 #define kGridView_itemHeight 100
-#define kGridView_H          BAKit_getColumnCountWithArrayAndRowCount_pod(self.gridDataArray, kGridView_rowCount) * kGridView_itemHeight
+#define kGridView_H          BAKit_getColumnCountWithArrayAndRowCount_pod(self.gridDataArray, kGridView_rowCount) * kGridView_itemHeight + 50
 
 #define kGridView_rowCount2   2
-#define kGridView_itemHeight2 80
+#define kGridView_itemHeight2 100
 #define kGridView_H2          BAKit_getColumnCountWithArrayAndRowCount_pod(self.gridDataArray2, kGridView_rowCount2) * kGridView_itemHeight2
 
 static NSString * const kUrl1 = @"http://fc.topitme.com/c/08/e1/11235427029dbe108cm.jpg";
@@ -103,31 +104,45 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
                 cell.textLabel.text = @"1、文上图下(点击更换样式)";
             }
             
-            UIView *footView = [UIView new];
-            footView.backgroundColor = [UIColor redColor];
-            footView.frame = CGRectMake(0, 20, BAKit_SCREEN_WIDTH, kGridView_H);
-            self.gridView.frame = footView.bounds;
-            [footView addSubview:self.gridView];
+            self.tableView.tableFooterView = [UIView new];
+            UIView *footView = [self.view viewWithTag:100];
             
+            if (!footView)
+            {
+                footView = [UIView new];
+                footView.backgroundColor = [UIColor redColor];
+                footView.frame = CGRectMake(0, 20, BAKit_SCREEN_WIDTH, kGridView_H2);
+                footView.tag = 100;
+                self.gridView.frame = footView.bounds;
+                [footView addSubview:self.gridView];
+            }
             self.tableView.tableFooterView = footView;
         }
             break;
         case 1:
         {
             self.ba_GridViewConfig.gridViewType = BAGridViewTypeBgImageTitle;
-
-            UIView *footView = [UIView new];
-            footView.backgroundColor = [UIColor redColor];
-            footView.frame = CGRectMake(0, 20, BAKit_SCREEN_WIDTH, kGridView_H);
-            self.gridView.frame = footView.bounds;
-            [footView addSubview:self.gridView];
+            self.tableView.tableFooterView = [UIView new];
             
+            UIView *footView = [self.view viewWithTag:101];
+            
+            if (!footView)
+            {
+                footView = [UIView new];
+                footView.backgroundColor = [UIColor redColor];
+                footView.frame = CGRectMake(0, 20, BAKit_SCREEN_WIDTH, kGridView_H2);
+                footView.tag = 101;
+                self.gridView.frame = footView.bounds;
+                [footView addSubview:self.gridView];
+            }
             self.tableView.tableFooterView = footView;
         }
             break;
         case 2:
         {
             self.ba_GridViewConfig.gridViewType = BAGridViewTypeTitleDesc;
+            self.tableView.tableFooterView = [UIView new];
+
             UIView *footView = [self.view viewWithTag:102];
 
             if (!footView)
@@ -213,8 +228,10 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         self.ba_GridViewConfig.ba_gridView_lineColor = BAKit_Color_Red_pod;
         // item：每行 item 的个数，默认为4个
         self.ba_GridViewConfig.ba_gridView_rowCount = kGridView_rowCount;
-        // item：高度
+        // item：高度/宽度
         self.ba_GridViewConfig.ba_gridView_itemHeight = kGridView_itemHeight;
+//        self.ba_GridViewConfig.ba_gridView_itemWidth = kGridView_itemWidth;
+
         // item：图片与文字间距（或者两行文字类型的间距），默认：0
         self.ba_GridViewConfig.ba_gridView_itemImageInset = 5;
         //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
@@ -226,7 +243,11 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         // item：背景选中颜色，默认：无色
         self.ba_GridViewConfig.ba_gridView_selectedBackgroundColor = BAKit_Color_Red_pod;
         self.ba_GridViewConfig.dataArray = self.gridDataArray;
-
+//        self.ba_GridViewConfig.ba_gridView_itemEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+//        self.ba_GridViewConfig.minimumLineSpacing = 10;
+//        self.ba_GridViewConfig.minimumInteritemSpacing = 10;
+        
+        
         _gridView = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
             
             BAKit_ShowAlertWithMsg_ios8(model.titleString);
@@ -239,12 +260,16 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
 {
     if (!_gridView2)
     {
+        self.ba_GridViewConfig.showLineView = YES;
+
         // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
         self.ba_GridViewConfig.ba_gridView_lineColor = BAKit_Color_Red_pod;
         // item：每行 item 的个数，默认为4个
         self.ba_GridViewConfig.ba_gridView_rowCount = kGridView_rowCount2;
         // item：高度
         self.ba_GridViewConfig.ba_gridView_itemHeight = kGridView_itemHeight2;
+        self.ba_GridViewConfig.ba_gridView_itemWidth = 0;
+
         // item：图片与文字间距（或者两行文字类型的间距），默认：0
         //            self.ba_GridViewConfig.ba_gridView_itemImageInset = 10;
         //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】

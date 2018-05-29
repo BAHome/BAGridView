@@ -49,6 +49,26 @@ typedef void (^BAGridViewBlock)(BAGridItemModel *model, NSIndexPath *indexPath);
 @property(nonatomic, assign) CGFloat ba_gridView_itemHeight;
 
 /**
+ item：宽度，图片高度 默认：（屏幕宽度 - ba_gridView_itemHeight * count）/ count
+ */
+@property(nonatomic, assign) CGFloat ba_gridView_itemWidth;
+
+/**
+ item：layout 的 UIEdgeInsets，默认：UIEdgeInsetsMake(0, 0, 0, 0)
+ */
+@property(nonatomic) UIEdgeInsets ba_gridView_itemEdgeInsets;
+
+/**
+ item：layout 的 minimumLineSpacing，默认：0
+ */
+@property(nonatomic, assign) CGFloat minimumLineSpacing;
+
+/**
+ item：layout 的 minimumLineSpacing，默认：0
+ */
+@property(nonatomic, assign) CGFloat minimumInteritemSpacing;
+
+/**
  item：图片与文字间距（或者两行文字类型的间距），默认：0
  */
 @property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;

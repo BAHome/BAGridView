@@ -76,7 +76,7 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
     min_y = 0;
     min_w = view_h;
     min_h = min_w;
-    self.bgImageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
+    self.bgImageView.frame = self.bounds;
     
     if (self.config.gridViewType == BAGridViewTypeImageTitle)
     {
@@ -219,6 +219,12 @@ BAKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
         self.bgImageView.image = BAKit_ImageName(config.model.bgImageName);
     }
     self.titleLabel.text = config.model.titleString;
+    self.titleLabel.font = config.ba_gridView_titleFont;
+    self.titleLabel.textColor = config.ba_gridView_titleColor;
+    
+    self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
+    self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
+
     [self layoutView];
 }
 
