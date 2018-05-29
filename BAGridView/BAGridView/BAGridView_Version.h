@@ -21,6 +21,12 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
  
+ 最新更新时间：2018-05-28 【倒叙】<br>
+ 最新Version：【Version：1.1.0】<br>
+ 更新内容：<br>
+ 1.1.0.1、全新版本适配【Version：1.1.0】，适配更加简洁！详见：demo <br>
+ 1.1.0.2、原 配置方法 单独抽成 BAGridView_Config 类，所有的配置都可以单独设置！更加简洁明了！如果代码中有使用老版本的，可以更改适配，也可以选择锁定上一版本【1.0.7】 <br>
+ 
  最新更新时间：2017-12-23 【倒叙】<br>
  最新Version：【Version：1.0.7】<br>
  更新内容：<br>

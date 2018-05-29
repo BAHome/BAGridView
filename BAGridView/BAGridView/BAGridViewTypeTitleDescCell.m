@@ -9,6 +9,7 @@
 #import "BAGridViewTypeTitleDescCell.h"
 #import "BAGridItemModel.h"
 #import "BAKit_ConfigurationDefine.h"
+#import "BAGridView_Config.h"
 
 @interface BAGridViewTypeTitleDescCell ()
 
@@ -53,12 +54,12 @@
     CGFloat min_h = 0;
     
     min_x = 0;
-    min_w = view_w - self.ba_gridView_lineWidth;
+    min_w = view_w - self.config.ba_gridView_lineWidth;
     min_h = view_h * 0.4;
     min_y = CGRectGetMidY(self.bounds) - min_h / 2 - view_h * 0.15;
     self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     
-    min_y = CGRectGetMaxY(self.titleLabel.frame) + self.ba_gridView_itemImageInset;
+    min_y = CGRectGetMaxY(self.titleLabel.frame) + self.config.ba_gridView_itemImageInset;
     min_h = view_h * 0.3;
     self.descLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     
@@ -75,16 +76,16 @@
 //    self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     
     
-    min_x = view_w - self.ba_gridView_lineWidth;
+    min_x = view_w - self.config.ba_gridView_lineWidth;
     min_y = 0;
-    min_w = self.ba_gridView_lineWidth;
+    min_w = self.config.ba_gridView_lineWidth;
     min_h = view_h;
     self.lineView_h.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
     
     min_x = 0;
-    min_y = view_h - self.ba_gridView_lineWidth;
+    min_y = view_h - self.config.ba_gridView_lineWidth;
     min_w = view_w;
-    min_h = self.ba_gridView_lineWidth;
+    min_h = self.config.ba_gridView_lineWidth;
     self.lineView_w.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
 }
 
@@ -138,51 +139,12 @@
     return _lineView_h;
 }
 
-- (void)setModel:(BAGridItemModel *)model
-{
-    _model = model;
-    
-    self.descLabel.text = model.desc;
-    self.titleLabel.text = model.titleString;
+- (void)setConfig:(BAGridView_Config *)config {
+    _config = config;
+    self.descLabel.text = _config.model.desc;
+    self.titleLabel.text = _config.model.titleString;
 }
 
-- (void)setBa_gridView_titleColor:(UIColor *)ba_gridView_titleColor
-{
-    _ba_gridView_titleColor = ba_gridView_titleColor;
-    
-    self.titleLabel.textColor = ba_gridView_titleColor;
-}
 
-- (void)setBa_gridView_titleDescColor:(UIColor *)ba_gridView_titleDescColor
-{
-    _ba_gridView_titleDescColor = ba_gridView_titleDescColor;
-    
-    self.descLabel.textColor = ba_gridView_titleDescColor;
-}
-
-- (void)setBa_gridView_lineColor:(UIColor *)ba_gridView_lineColor
-{
-    _ba_gridView_lineColor = ba_gridView_lineColor;
-    
-    self.lineView_w.backgroundColor = ba_gridView_lineColor;
-    self.lineView_h.backgroundColor = ba_gridView_lineColor;
-}
-
-- (void)setBa_gridView_lineWidth:(CGFloat)ba_gridView_lineWidth
-{
-    _ba_gridView_lineWidth = ba_gridView_lineWidth;
-}
-
-- (void)setBa_gridView_titleFont:(UIFont *)ba_gridView_titleFont
-{
-    _ba_gridView_titleFont = ba_gridView_titleFont;
-    self.titleLabel.font = ba_gridView_titleFont;
-}
-
-- (void)setBa_gridView_titleDescFont:(UIFont *)ba_gridView_titleDescFont
-{
-    _ba_gridView_titleDescFont = ba_gridView_titleDescFont;
-    self.descLabel.font = ba_gridView_titleDescFont;
-}
 
 @end

@@ -41,119 +41,18 @@
 ```
 #import <UIKit/UIKit.h>
 
-@class BAGridItemModel, BAGridView;
-
-/**
- 宫格样式
-
- - BAGridViewTypeImageTitle: 上面是图片，下面是文字
- - BAGridViewTypeTitleDesc: 上下都是文字，上面标题字体大，下面是详情字体小
- */
-typedef NS_ENUM(NSUInteger, BAGridViewType) {
-    BAGridViewTypeImageTitle = 0,
-    BAGridViewTypeTitleDesc
-};
-
-/**
- BAGridView 回调
-
- @param model 返回 BAGridItemModel
- @param indexPath indexPath
- */
-typedef void (^BAGridViewBlock)(BAGridItemModel *model, NSIndexPath *indexPath);
-
-/**
- BAGridView 配置回调
-
- @param tempView BAGridView
- */
-typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
-
+@class BAGridView_Config;
 @interface BAGridView : UIView
 
 /**
- 宫格样式，默认：BAGridViewTypeImageTitle
- */
-@property(nonatomic, assign) BAGridViewType gridViewType;
+快速创建宫格
 
-/**
- 数据源：来自 BAGridItemModel
- */
-@property(nonatomic, strong) NSArray <BAGridItemModel *>*dataArray;
-
-/**
- item：点击回调
- */
-@property(nonatomic, copy)   BAGridViewBlock ba_gridViewBlock;
-
-/**
- item：高度，图片高度 默认：ba_gridView_itemHeight * 0.4
- */
-@property(nonatomic, assign) CGFloat ba_gridView_itemHeight;
-
-/**
- item：图片与文字间距（或者两行文字类型的间距），默认：0
- */
-@property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
-
-/**
- item：每行 item 的个数，默认：4个
- */
-@property(nonatomic, assign) NSInteger ba_gridView_rowCount;
-
-/**
- item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
- */
-@property(nonatomic, strong) UIColor *ba_gridView_titleColor;
-
-/**
- item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
- */
-@property(nonatomic, strong) UIColor *ba_gridView_titleDescColor;
-
-/**
- item：分割线颜色，默认：BAKit_Color_Gray_10【BAKit_Color_RGB(240, 240, 240)】
- */
-@property(nonatomic, strong) UIColor *ba_gridView_lineColor;
-
-/**
- item：背景颜色，默认：BAKit_Color_White
- */
-@property(nonatomic, strong) UIColor *ba_gridView_backgroundColor;
-
-/**
- item：背景选中颜色，默认：无色
- */
-@property(nonatomic, strong) UIColor *ba_gridView_selectedBackgroundColor;
-
-/**
- item：是否显示分割线
- */
-@property(nonatomic, assign, getter=isShowLineView) BOOL showLineView;
-
-/**
- item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
- */
-@property(nonatomic, strong) UIFont *ba_gridView_titleFont;
-
-/**
- item：Desc Font，默认：两行文字下 12
- */
-@property(nonatomic, strong) UIFont *ba_gridView_titleDescFont;
-
-/**
- 快速创建宫格
-
- @param gridViewType 样式
- @param dataArray 数据
- @param configurationBlock 配置回调
- @param block 点击事件回调
- @return BAGridView
- */
-+ (instancetype)ba_creatGridViewWithGridViewType:(BAGridViewType)gridViewType
-                                       dataArray:(NSArray <BAGridItemModel *>*)dataArray
-                              configurationBlock:(BAGridView_configurationBlock)configurationBlock
-                                           block:(BAGridViewBlock)block;
+@param config view 基础配置
+@param block 点击事件回调
+@return BAGridView
+*/
++ (instancetype)ba_creatGridViewWithGridViewConfig:(BAGridView_Config *)config
+block:(BAGridViewBlock)block;
 
 @end
 
@@ -166,34 +65,30 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
 {
     if (!_gridView)
     {
-        _gridView = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeImageTitle dataArray:self.gridDataArray configurationBlock:^(BAGridView *tempView) {
-            
-            // 是否显示分割线
-//            tempView.showLineView = NO;
-            // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
-//            tempView.ba_gridView_lineColor = BAKit_Color_Red;
-            // item：每行 item 的个数，默认为4个
-            tempView.ba_gridView_rowCount = kGridView_rowCount;
-            // item：高度
-            tempView.ba_gridView_itemHeight = kGridView_itemHeight;
-            // item：图片与文字间距（或者两行文字类型的间距），默认：0
-//            tempView.ba_gridView_itemImageInset = 10;
-            //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
-//            tempView.ba_gridView_titleColor = BAKit_Color_Black;
-            // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
-            tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
-            // item：背景颜色，默认：BAKit_Color_White
-            tempView.ba_gridView_backgroundColor = BAKit_Color_White;
-            // item：背景选中颜色，默认：无色
-            tempView.ba_gridView_selectedBackgroundColor = BAKit_Color_Red;
-            
-            self.gridView = tempView;
-            
-        } block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+        // 是否显示分割线
+        self.ba_GridViewConfig.showLineView = YES;
+        // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
+        self.ba_GridViewConfig.ba_gridView_lineColor = BAKit_Color_Red_pod;
+        // item：每行 item 的个数，默认为4个
+        self.ba_GridViewConfig.ba_gridView_rowCount = kGridView_rowCount;
+        // item：高度
+        self.ba_GridViewConfig.ba_gridView_itemHeight = kGridView_itemHeight;
+        // item：图片与文字间距（或者两行文字类型的间距），默认：0
+        self.ba_GridViewConfig.ba_gridView_itemImageInset = 5;
+        //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
+        //            self.ba_GridViewConfig.ba_gridView_titleColor = BAKit_Color_Black;
+        // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+        self.ba_GridViewConfig.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
+        // item：背景颜色，默认：BAKit_Color_White
+        self.ba_GridViewConfig.ba_gridView_backgroundColor = [UIColor yellowColor];
+        // item：背景选中颜色，默认：无色
+        self.ba_GridViewConfig.ba_gridView_selectedBackgroundColor = BAKit_Color_Red_pod;
+        self.ba_GridViewConfig.dataArray = self.gridDataArray;
+
+        _gridView = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
             
             BAKit_ShowAlertWithMsg_ios8(model.titleString);
         }];
-        _gridView.backgroundColor = BAKit_Color_White;
     }
     return _gridView;
 }
@@ -221,39 +116,45 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
     }
     return _gridDataArray;
 }
-    
+  
+- (BAGridView_Config *)ba_GridViewConfig {
+    if (!_ba_GridViewConfig) {
+        _ba_GridViewConfig = [[BAGridView_Config alloc] init];
+    }
+    return _ba_GridViewConfig;
+}  
     
 // 示例2：
 - (BAGridView *)gridView2
 {
     if (!_gridView2)
     {
-        _gridView2 = [BAGridView ba_creatGridViewWithGridViewType:BAGridViewTypeTitleDesc dataArray:self.gridDataArray2 configurationBlock:^(BAGridView *tempView) {
-                                                            
-            // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
-            tempView.ba_gridView_lineColor = BAKit_Color_Red;
-            // item：每行 item 的个数，默认为4个
-            tempView.ba_gridView_rowCount = kGridView_rowCount2;
-            // item：高度
-            tempView.ba_gridView_itemHeight = kGridView_itemHeight2;
-            // item：图片与文字间距（或者两行文字类型的间距），默认：0
-//            tempView.ba_gridView_itemImageInset = 10;
-            //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
-            tempView.ba_gridView_titleColor = BAKit_Color_Black;
-            //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
-            tempView.ba_gridView_titleDescColor = BAKit_Color_Gray_7;
-            // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
-            tempView.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
-            // item：Desc Font，默认：两行文字下 12
-            tempView.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
-
-            self.gridView2 = tempView;
-
-        } block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+        // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
+        self.ba_GridViewConfig.ba_gridView_lineColor = BAKit_Color_Red_pod;
+        // item：每行 item 的个数，默认为4个
+        self.ba_GridViewConfig.ba_gridView_rowCount = kGridView_rowCount2;
+        // item：高度
+        self.ba_GridViewConfig.ba_gridView_itemHeight = kGridView_itemHeight2;
+        // item：图片与文字间距（或者两行文字类型的间距），默认：0
+        //            self.ba_GridViewConfig.ba_gridView_itemImageInset = 10;
+        //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
+        self.ba_GridViewConfig.ba_gridView_titleColor = BAKit_Color_Black_pod;
+        //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
+        self.ba_GridViewConfig.ba_gridView_titleDescColor = BAKit_Color_Gray_7_pod;
+        // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+        self.ba_GridViewConfig.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
+        // item：Desc Font，默认：两行文字下 12
+        self.ba_GridViewConfig.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
+        // item：背景颜色，默认：BAKit_Color_White
+        self.ba_GridViewConfig.ba_gridView_backgroundColor = [UIColor yellowColor];
+        // item：背景选中颜色，默认：无色
+        self.ba_GridViewConfig.ba_gridView_selectedBackgroundColor = [UIColor greenColor];
+        self.ba_GridViewConfig.dataArray = self.gridDataArray2;
+        
+        _gridView2 = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
             
             BAKit_ShowAlertWithMsg_ios8(model.titleString);
         }];
-        _gridView2.backgroundColor = [UIColor yellowColor];
     }
     return _gridView2;
 }
@@ -286,7 +187,12 @@ typedef void (^BAGridView_configurationBlock)(BAGridView *tempView);
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
  
-  
+ 最新更新时间：2018-05-28 【倒叙】<br>
+ 最新Version：【Version：1.1.0】<br>
+ 更新内容：<br>
+ 1.1.0.1、全新版本适配，适配更加简洁！详见：demo <br>
+ 1.1.0.2、原 配置方法 单独抽成 BAGridView_Config 类，所有的配置都可以单独设置！更加简洁明了！如果代码中有使用老版本的，可以更改适配，也可以选择锁定上一版本【1.0.7】 <br>
+ 
  最新更新时间：2017-12-23 【倒叙】<br>
  最新Version：【Version：1.0.7】<br>
  更新内容：<br>

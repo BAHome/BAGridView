@@ -59,30 +59,11 @@
 
 
 #import <UIKit/UIKit.h>
-
-@class BAGridItemModel;
+@class BAGridView_Config, BAGridItemModel;
 
 @interface BAGridCollectionCell : UICollectionViewCell
 
-@property(nonatomic, strong) BAGridItemModel *model;
+@property(nonatomic, strong) BAGridView_Config *config;
 
-@property(nonatomic, strong) UIColor *ba_gridView_titleColor;
-
-/**
- item：分割线颜色
- */
-@property(nonatomic, strong) UIColor *ba_gridView_lineColor;
-
-@property(nonatomic, assign) CGFloat ba_gridView_lineWidth;
-
-/**
- item：图片与文字间距
- */
-@property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
-
-/**
- item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
- */
-@property(nonatomic, strong) UIFont *ba_gridView_titleFont;
 
 @end
