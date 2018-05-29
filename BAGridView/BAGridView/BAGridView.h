@@ -60,7 +60,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class BAGridView_Config;
+#import "BAGridView_Config.h"
+
 @interface BAGridView : UIView
 
 /**

@@ -10,7 +10,6 @@
 #import "BAGridCollectionCell.h"
 #import "BAGridViewTypeTitleDescCell.h"
 
-#import "BAGridView_Config.h"
 
 static NSString * const kCellID = @"BAGridCollectionCell";
 static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
