@@ -21,6 +21,11 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
  
+ 最新更新时间：2018-05-31 【倒叙】<br>
+ 最新Version：【Version：1.1.2】<br>
+ 更新内容：<br>
+ 1.1.2.1、优化部分代码，新增 是否可以滑动属性【scrollEnabled】！详见：demo <br>
+ 
  最新更新时间：2018-05-29 【倒叙】<br>
  最新Version：【Version：1.1.1】<br>
  更新内容：<br>

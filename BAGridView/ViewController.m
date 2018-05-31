@@ -222,6 +222,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
 {
     if (!_gridView)
     {
+        self.ba_GridViewConfig.scrollEnabled = YES;
         // 是否显示分割线
         self.ba_GridViewConfig.showLineView = YES;
         // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】

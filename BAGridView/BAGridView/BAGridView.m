@@ -189,9 +189,12 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         _collectionView.backgroundColor = BAKit_Color_Clear_pod;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.scrollEnabled = NO;
+        _collectionView.scrollEnabled = self.config.isScrollEnabled;
+        _collectionView.alwaysBounceVertical = YES;
+
         [_collectionView registerClass:[BAGridCollectionCell class] forCellWithReuseIdentifier:kCellID];
         [_collectionView registerClass:[BAGridViewTypeTitleDescCell class] forCellWithReuseIdentifier:kCellID2];
+        
         [self addSubview:_collectionView];
     }
     return _collectionView;

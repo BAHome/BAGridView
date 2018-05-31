@@ -22,6 +22,7 @@
         self.ba_gridView_backgroundColor = BAKit_Color_White_pod;
         self.dataArray = @[].mutableCopy;
         self.ba_gridView_lineWidth = BAKit_Flat_pod(0.5f);
+        self.scrollEnabled = YES;
     }
     return self;
 }

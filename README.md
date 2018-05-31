@@ -227,6 +227,11 @@ block:(BAGridViewBlock)block;
  欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
  如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
  
+ 最新更新时间：2018-05-31 【倒叙】<br>
+ 最新Version：【Version：1.1.2】<br>
+ 更新内容：<br>
+ 1.1.2.1、优化部分代码，新增 是否可以滑动属性【scrollEnabled】！详见：demo <br>
+ 
  最新更新时间：2018-05-29 【倒叙】<br>
  最新Version：【Version：1.1.1】<br>
  更新内容：<br>

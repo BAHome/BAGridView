@@ -38,6 +38,12 @@ typedef void (^BAGridViewBlock)(BAGridItemModel *model, NSIndexPath *indexPath);
 
 @interface BAGridView_Config : NSObject
 
+
+/**
+ 是否可以滑动，默认：YES
+ */
+@property(nonatomic,getter=isScrollEnabled) BOOL scrollEnabled;
+
 /**
  宫格样式，默认：BAGridViewTypeImageTitle
  */
