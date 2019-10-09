@@ -77,4 +77,8 @@
 + (instancetype)ba_creatGridViewWithGridViewConfig:(BAGridView_Config *)config
                                              block:(BAGridViewBlock)block;
 
++ (instancetype)ba_creatGridViewWithGridViewConfig:(BAGridView_Config *)config
+                                  placdholderImage:(UIImage *)placdholderImage
+                                             block:(BAGridViewBlock)block;
+
 @end

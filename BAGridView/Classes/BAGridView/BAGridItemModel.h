@@ -74,11 +74,6 @@
 @property(nonatomic, copy) NSString *bgImageName;
 
 /**
- placdholder 图片名
- */
-@property(nonatomic, copy) NSString *placdholderImageName;
-
-/**
  标题
  */
 @property(nonatomic, copy) NSString *titleString;

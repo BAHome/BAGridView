@@ -255,6 +255,12 @@ return _gridDataArray2;
 欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
 
+最新更新时间：2019-10-09 【倒叙】<br>
+最新Version：【Version：1.1.5】<br>
+更新内容：<br>
+1.1.5.1、新增自定义图片的宽高！详见：code <br>
+1.1.5.2、新增自定义背景图片！详见：demo <br>
+
 最新更新时间：2019-09-10 【倒叙】<br>
 最新Version：【Version：1.1.4】<br>
 更新内容：<br>

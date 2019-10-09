@@ -140,4 +140,16 @@ typedef void (^BAGridViewBlock)(BAGridItemModel *model, NSIndexPath *indexPath);
 @property(nonatomic, copy)   BAGridViewBlock ba_gridViewBlock;
 @property(nonatomic, assign) CGFloat ba_gridView_lineWidth;
 
+#pragma mark - 2019-10-09 新增
+/**
+ 图片宽度
+ */
+@property(nonatomic, assign) CGFloat ba_gridView_imageWidth;
+
+/**
+图片高度
+*/
+@property(nonatomic, assign) CGFloat ba_gridView_imageHeight;
+
+
 @end

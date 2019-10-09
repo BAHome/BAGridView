@@ -21,6 +21,12 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
  
+ 最新更新时间：2019-10-09 【倒叙】<br>
+ 最新Version：【Version：1.1.5】<br>
+ 更新内容：<br>
+ 1.1.5.1、新增自定义图片的宽高！详见：demo <br>
+ 1.1.5.2、新增自定义背景图片！详见：demo <br>
+
  最新更新时间：2019-09-10 【倒叙】<br>
  最新Version：【Version：1.1.4】<br>
  更新内容：<br>

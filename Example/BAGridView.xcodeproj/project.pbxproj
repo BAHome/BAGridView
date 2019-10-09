@@ -504,6 +504,7 @@
 				GCC_PREFIX_HEADER = "BAGridView/BAGridView-Prefix.pch";
 				INFOPLIST_FILE = "BAGridView/BAGridView-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MARKETING_VERSION = 1.1.5;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,6 +523,7 @@
 				GCC_PREFIX_HEADER = "BAGridView/BAGridView-Prefix.pch";
 				INFOPLIST_FILE = "BAGridView/BAGridView-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MARKETING_VERSION = 1.1.5;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

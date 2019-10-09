@@ -77,7 +77,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
     }
     
     BAGridView_Config *config = self.ba_GridViewConfig2;
-
+    
     NSMutableArray *dataArray = @[].mutableCopy;
     
     NSInteger num = BAKit_RandomNumber(10);
@@ -263,7 +263,8 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         config.ba_gridView_rowCount = kGridView_rowCount;
         // item：高度/宽度
         config.ba_gridView_itemHeight = kGridView_itemHeight;
-        //        config.ba_gridView_itemWidth = kGridView_itemWidth;
+        config.ba_gridView_imageWidth = 40;
+        config.ba_gridView_imageHeight = 40;
         
         // item：图片与文字间距（或者两行文字类型的间距），默认：0
         config.ba_gridView_itemImageInset = 5;
@@ -281,7 +282,9 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         //        config.minimumInteritemSpacing = 10;
         
         
-        _gridView = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+        _gridView = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig
+                                                  placdholderImage:[UIImage imageNamed:@"icon_placeholder"]
+                                                             block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
             
             BAKit_ShowAlertWithMsg_ios8(model.titleString);
         }];
@@ -292,7 +295,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
 - (BAGridView *)gridView2 {
     if (!_gridView2) {
         BAGridView_Config *config = self.ba_GridViewConfig2;
-
+        
         config.showLineView = YES;
         
         // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
@@ -332,7 +335,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         _gridDataArray = @[].mutableCopy;
         
         BAGridView_Config *config = self.ba_GridViewConfig;
-
+        
         // 可以为本地图片
         //        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
         // 也可以是网络图片
@@ -341,27 +344,29 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         NSArray *bgImageNameArray;
         
         if (config.gridViewType == BAGridViewTypeBgImageTitle) {
-            bgImageNameArray = @[@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+            bgImageNameArray = @[@"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
                                  @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
-                                 @"http://fc.topitme.com/c/08/e1/11235427029dbe108cm.jpg",
-                                 @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
-                                 @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg"
+            ];
         } else {
-            imageNameArray = @[@"http://120.24.177.96:1525/images/20170706/b2acbae9-020c-4eaa-87b4-f7286ae69ba1.png",
-                               @"http://120.24.177.96:1525/images/20170706/ae3a4188-f01a-442e-aaf0-94739e30b698.png",
-                               @"http://120.24.177.96:1525/images/20170706/d4c88154-eaed-441a-8c8a-89d9a6d4755e.png",
-                               @"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
-                               @"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+            imageNameArray = @[@"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd41.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd442.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd443.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg"
+            ];
         }
         
         if (config.gridViewType == BAGridViewTypeImageTitle || config.gridViewType == BAGridViewTypeTitleImage) {
             bgImageNameArray = @[
-                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-                                 @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-                                 ];
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+            ];
         }
         
         NSArray *titleArray = @[@"小区tabbar_main", @"商圈", @"社交57128423", @"出行", @"武术"];
@@ -374,7 +379,6 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
             if (bgImageNameArray.count > 0) {
                 model.bgImageName = bgImageNameArray[i];
             }
-            model.placdholderImageName = @"tabbar_mainframeHL";
             model.titleString = titleArray[i];
             
             [self.gridDataArray addObject:model];
