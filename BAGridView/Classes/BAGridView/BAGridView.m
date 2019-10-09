@@ -19,6 +19,11 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, weak) NSIndexPath  *selectIndexPath;
 
+/**
+ placdholder 图片
+ */
+@property(nonatomic, strong) UIImage *placdholderImage;
+
 @end
 
 @implementation BAGridView
@@ -47,6 +52,23 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     }
     tempView.config = config;
     tempView.config.ba_gridViewBlock = block;
+    
+    [tempView setupUI];
+    return tempView;
+}
+
++ (instancetype)ba_creatGridViewWithGridViewConfig:(BAGridView_Config *)config
+                                  placdholderImage:(UIImage *)placdholderImage
+                                             block:(BAGridViewBlock)block {
+    BAGridView *tempView = [[BAGridView alloc] init];
+    
+    if (config == nil) {
+        config = [[BAGridView_Config alloc] init];
+    }
+    tempView.config = config;
+    tempView.config.ba_gridViewBlock = block;
+    tempView.placdholderImage = placdholderImage;
+    
     [tempView setupUI];
     return tempView;
 }
@@ -85,6 +107,9 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         ) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
         cell.backgroundColor = BAKit_Color_Clear_pod;
+        if (self.config.gridViewType != BAGridViewTypeBgImageTitle) {
+            cell.placdholderImage = self.placdholderImage;
+        }
         cell.config = self.config;
         return cell;
     } else if (self.config.gridViewType == BAGridViewTypeTitleDesc) {
@@ -94,7 +119,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         return cell2;
     }
     
-    return [UICollectionViewCell new];
+    return UICollectionViewCell.new;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,6 +167,12 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 #pragma mark - setter, getter
 - (void)setConfig:(BAGridView_Config *)config {
     _config = config;
+    
+    [self.collectionView reloadData];
+}
+
+- (void)setPlacdholderImage:(UIImage *)placdholderImage {
+    _placdholderImage = placdholderImage;
     
     [self.collectionView reloadData];
 }
