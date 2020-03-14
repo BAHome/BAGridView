@@ -89,163 +89,178 @@ block:(BAGridViewBlock)block;
 ### demo 示例
 ```
 // 示例1：
-- (BAGridView *)gridView
-{
-if (!_gridView)
-{
-// 是否显示分割线
-self.ba_GridViewConfig.showLineView = YES;
-// item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
-self.ba_GridViewConfig.ba_gridView_lineColor = BAKit_Color_Red_pod;
-// item：每行 item 的个数，默认为4个
-self.ba_GridViewConfig.ba_gridView_rowCount = kGridView_rowCount;
-// item：高度
-self.ba_GridViewConfig.ba_gridView_itemHeight = kGridView_itemHeight;
-// item：图片与文字间距（或者两行文字类型的间距），默认：0
-self.ba_GridViewConfig.ba_gridView_itemImageInset = 5;
-//  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
-//            self.ba_GridViewConfig.ba_gridView_titleColor = BAKit_Color_Black;
-// item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
-self.ba_GridViewConfig.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
-// item：背景颜色，默认：BAKit_Color_White
-self.ba_GridViewConfig.ba_gridView_backgroundColor = [UIColor yellowColor];
-// item：背景选中颜色，默认：无色
-self.ba_GridViewConfig.ba_gridView_selectedBackgroundColor = BAKit_Color_Red_pod;
-self.ba_GridViewConfig.dataArray = self.gridDataArray;
 
-_gridView = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+- (BAGridView *)gridView {
+    if (!_gridView) {
+        
+        BAGridView_Config *config = self.ba_GridViewConfig;
+        
+        config.scrollEnabled = YES;
+        // 是否显示分割线
+        config.showLineView = YES;
+        // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
+        config.ba_gridView_lineColor = BAKit_Color_Red_pod;
+        // item：每行 item 的个数，默认为4个
+        config.ba_gridView_rowCount = kGridView_rowCount;
+        // item：高度/宽度
+        config.ba_gridView_itemHeight = kGridView_itemHeight;
+        config.ba_gridView_imageWidth = 40;
+        config.ba_gridView_imageHeight = 40;
+        
+        // item：图片与文字间距（或者两行文字类型的间距），默认：0
+        config.ba_gridView_itemImageInset = 5;
+        //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
+        //            config.ba_gridView_titleColor = BAKit_Color_Black;
+        // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+        config.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
+        // item：背景颜色，默认：BAKit_Color_White
+        config.ba_gridView_backgroundColor = [UIColor yellowColor];
+        // item：背景选中颜色，默认：无色
+        config.ba_gridView_selectedBackgroundColor = BAKit_Color_Red_pod;
+        // badge
+        config.ba_gridView_badgeType = kBAGridViewBadgeType_Center;
+        config.ba_gridView_badgeFont = [UIFont systemFontOfSize:10];
+        config.ba_gridView_badgeRectCorners = UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomRight;
+//        config.ba_gridView_badgeCornerRadius = 3;
+//        config.ba_gridView_badgeBgColor = UIColor.orangeColor;
+//        config.ba_gridView_badgeTextColor = UIColor.greenColor;
+//        config.ba_gridView_badgeHeight = 30;
+//        config.ba_gridView_badgeOffsetPoint = CGPointMake(10, -10);
 
-BAKit_ShowAlertWithMsg_ios8(model.titleString);
-}];
-}
-return _gridView;
-}
-
-
-- (NSMutableArray <BAGridItemModel *> *)gridDataArray
-{
-if (!_gridDataArray)
-{
-_gridDataArray = @[].mutableCopy;
-
-// 可以为本地图片
-//        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
-// 也可以是网络图片
-
-NSArray *imageNameArray;
-NSArray *bgImageNameArray;
-
-if (self.ba_GridViewConfig.gridViewType == BAGridViewTypeBgImageTitle)
-{
-bgImageNameArray = @[@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-@"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
-@"http://fc.topitme.com/c/08/e1/11235427029dbe108cm.jpg",
-@"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
-@"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
-}
-else
-{
-imageNameArray = @[@"http://120.24.177.96:1525/images/20170706/b2acbae9-020c-4eaa-87b4-f7286ae69ba1.png",
-@"http://120.24.177.96:1525/images/20170706/ae3a4188-f01a-442e-aaf0-94739e30b698.png",
-@"http://120.24.177.96:1525/images/20170706/d4c88154-eaed-441a-8c8a-89d9a6d4755e.png",
-@"http://120.24.177.96:1525/images/20170706/91c9e2ba-9493-4009-8f3d-e613350b7c17.png",
-@"http://120.24.177.96:1525/images/20170706/d36ab2cb-36e3-4492-89c8-5712848dadb8.png"];
+        config.dataArray = self.gridDataArray;
+        //        config.ba_gridView_itemEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        //        config.minimumLineSpacing = 10;
+        //        config.minimumInteritemSpacing = 10;
+        
+        
+        _gridView = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig
+                                                  placdholderImage:[UIImage imageNamed:@"icon_placeholder"]
+                                                             block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+            
+            BAKit_ShowAlertWithMsg_ios8(model.titleString);
+        }];
+    }
+    return _gridView;
 }
 
-if (self.ba_GridViewConfig.gridViewType == BAGridViewTypeImageTitle || self.ba_GridViewConfig.gridViewType == BAGridViewTypeTitleImage)
-{
-bgImageNameArray = @[
-@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-@"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
-];
+- (BAGridView *)gridView2 {
+    if (!_gridView2) {
+        BAGridView_Config *config = self.ba_GridViewConfig2;
+        
+        config.showLineView = YES;
+        
+        // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
+        config.ba_gridView_lineColor = BAKit_Color_Red_pod;
+        // item：每行 item 的个数，默认为4个
+        config.ba_gridView_rowCount = kGridView_rowCount2;
+        // item：高度
+        config.ba_gridView_itemHeight = kGridView_itemHeight2;
+        config.ba_gridView_itemWidth = 0;
+        
+        // item：图片与文字间距（或者两行文字类型的间距），默认：0
+        //            config.ba_gridView_itemImageInset = 10;
+        //  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
+        config.ba_gridView_titleColor = BAKit_Color_Black_pod;
+        //  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
+        config.ba_gridView_titleDescColor = BAKit_Color_Gray_7_pod;
+        // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
+        config.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
+        // item：Desc Font，默认：两行文字下 12
+        config.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
+        // item：背景颜色，默认：BAKit_Color_White
+        config.ba_gridView_backgroundColor = [UIColor yellowColor];
+        // item：背景选中颜色，默认：无色
+        config.ba_gridView_selectedBackgroundColor = [UIColor greenColor];
+        config.dataArray = self.gridDataArray2;
+        
+        _gridView2 = [BAGridView ba_creatGridViewWithGridViewConfig:config block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+            
+            BAKit_ShowAlertWithMsg_ios8(model.titleString);
+        }];
+    }
+    return _gridView2;
 }
 
-NSArray *titleArray = @[@"小区tabbar_main", @"商圈", @"社交57128423", @"出行", @"武术"];
-
-for (NSInteger i = 0; i < titleArray.count; i++)
-{
-BAGridItemModel *model = [BAGridItemModel new];
-if (imageNameArray.count > 0)
-{
-model.imageName = imageNameArray[i];
+- (NSMutableArray <BAGridItemModel *> *)gridDataArray {
+    if (!_gridDataArray) {
+        _gridDataArray = @[].mutableCopy;
+        
+        BAGridView_Config *config = self.ba_GridViewConfig;
+        
+        // 可以为本地图片
+        //        NSArray *imageNameArray = @[@"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL", @"tabbar_mainframeHL"];
+        // 也可以是网络图片
+        
+        NSArray *imageNameArray;
+        NSArray *bgImageNameArray;
+        
+        if (config.gridViewType == BAGridViewTypeBgImageTitle) {
+            bgImageNameArray = @[@"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                                 @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg"
+            ];
+        } else {
+            imageNameArray = @[@"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd41.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd442.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd443.jpg",
+                               @"http://d.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d67cda2ef50d0828381e30fd44.jpg"
+            ];
+        }
+        
+        if (config.gridViewType == BAGridViewTypeImageTitle || config.gridViewType == BAGridViewTypeTitleImage) {
+            bgImageNameArray = @[
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+                @"http://img.qq1234.org/uploads/allimg/161212/16012W921-11.jpg",
+            ];
+        }
+        
+        NSArray *titleArray = @[@"小区tabbar_main", @"商圈", @"社交57128423", @"出行", @"武术"];
+        
+        for (NSInteger i = 0; i < titleArray.count; i++) {
+            BAGridItemModel *model = [BAGridItemModel new];
+            if (imageNameArray.count > 0) {
+                model.imageName = imageNameArray[i];
+            }
+            if (bgImageNameArray.count > 0) {
+                model.bgImageName = bgImageNameArray[i];
+            }
+            model.titleString = titleArray[i];
+            
+            if (config.gridViewType == BAGridViewTypeImageTitle) {
+                model.badge = @(BAKit_RandomNumber(2000)).stringValue;
+                if (i == 1) {
+                    model.badge = @"新功能";
+                }
+            }
+            
+            [self.gridDataArray addObject:model];
+        }
+    }
+    return _gridDataArray;
 }
-if (bgImageNameArray.count > 0)
-{
-model.bgImageName = bgImageNameArray[i];
-}
-model.placdholderImageName = @"tabbar_mainframeHL";
-model.titleString = titleArray[i];
 
-[self.gridDataArray addObject:model];
-}
-}
-return _gridDataArray;
-}
-
-- (BAGridView_Config *)ba_GridViewConfig {
-if (!_ba_GridViewConfig) {
-_ba_GridViewConfig = [[BAGridView_Config alloc] init];
-}
-return _ba_GridViewConfig;
-}  
-
-// 示例2：
-- (BAGridView *)gridView2
-{
-if (!_gridView2)
-{
-// item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
-self.ba_GridViewConfig.ba_gridView_lineColor = BAKit_Color_Red_pod;
-// item：每行 item 的个数，默认为4个
-self.ba_GridViewConfig.ba_gridView_rowCount = kGridView_rowCount2;
-// item：高度
-self.ba_GridViewConfig.ba_gridView_itemHeight = kGridView_itemHeight2;
-// item：图片与文字间距（或者两行文字类型的间距），默认：0
-//            self.ba_GridViewConfig.ba_gridView_itemImageInset = 10;
-//  item：title 颜色，默认：BAKit_Color_Black【[UIColor blackColor]】
-self.ba_GridViewConfig.ba_gridView_titleColor = BAKit_Color_Black_pod;
-//  item：Desc 颜色，默认：BAKit_Color_Gray_9【BAKit_Color_RGB(216, 220, 228)】
-self.ba_GridViewConfig.ba_gridView_titleDescColor = BAKit_Color_Gray_7_pod;
-// item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
-self.ba_GridViewConfig.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:25];
-// item：Desc Font，默认：两行文字下 12
-self.ba_GridViewConfig.ba_gridView_titleDescFont = [UIFont boldSystemFontOfSize:15];
-// item：背景颜色，默认：BAKit_Color_White
-self.ba_GridViewConfig.ba_gridView_backgroundColor = [UIColor yellowColor];
-// item：背景选中颜色，默认：无色
-self.ba_GridViewConfig.ba_gridView_selectedBackgroundColor = [UIColor greenColor];
-self.ba_GridViewConfig.dataArray = self.gridDataArray2;
-
-_gridView2 = [BAGridView ba_creatGridViewWithGridViewConfig:self.ba_GridViewConfig block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
-
-BAKit_ShowAlertWithMsg_ios8(model.titleString);
-}];
-}
-return _gridView2;
-}
-
-- (NSMutableArray <BAGridItemModel *> *)gridDataArray2
-{
-if (!_gridDataArray2)
-{
-_gridDataArray2 = @[].mutableCopy;
-
-NSArray *titleArray = @[@"200", @"20", @"200", @"10", ];
-NSArray *descArray = @[@"新增积分总量", @"返还积分总量", @"全返单元总量", @"每单元返还积分"];
-
-for (NSInteger i = 0; i < titleArray.count; i++)
-{
-BAGridItemModel *model = [BAGridItemModel new];
-model.desc = descArray[i];
-model.titleString = titleArray[i];
-
-[_gridDataArray2 addObject:model];
-}
-}
-return _gridDataArray2;
+- (NSMutableArray <BAGridItemModel *> *)gridDataArray2 {
+    if (!_gridDataArray2) {
+        _gridDataArray2 = @[].mutableCopy;
+        
+        NSArray *titleArray = @[@"200", @"20", @"200", @"10", ];
+        NSArray *descArray = @[@"新增积分总量", @"返还积分总量", @"全返单元总量", @"每单元返还积分"];
+        
+        for (NSInteger i = 0; i < titleArray.count; i++) {
+            BAGridItemModel *model = [BAGridItemModel new];
+            model.desc = descArray[i];
+            model.titleString = titleArray[i];
+            
+            [_gridDataArray2 addObject:model];
+        }
+    }
+    return _gridDataArray2;
 }
 
 其他示例可下载demo查看源码！
@@ -254,6 +269,12 @@ return _gridDataArray2;
 ## 5、更新记录：【倒叙】
 欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
+
+
+最新更新时间：2020-03-14 【倒叙】<br>
+最新Version：【Version：1.1.6】<br>
+更新内容：<br>
+1.1.6.1、新增自定义 badge，可以实现自定义 badge 样式、字体、字体颜色、背景颜色、圆角、offset等，满足大部分用户的角标需求！详见：code <br>
 
 最新更新时间：2019-10-09 【倒叙】<br>
 最新Version：【Version：1.1.5】<br>

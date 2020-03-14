@@ -62,12 +62,6 @@
 #define BAKit_ConfigurationDefine_h
 
 
-#ifndef __OPTIMIZE__
-#define NSLog(...) NSLog(__VA_ARGS__)
-#else
-#define NSLog(...){}
-#endif
-
 #pragma mark - weak / strong
 #define BAKit_WeakSelf        @BAKit_Weakify(self);
 #define BAKit_StrongSelf      @BAKit_Strongify(self);
