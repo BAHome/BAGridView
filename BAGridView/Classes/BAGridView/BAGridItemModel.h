@@ -83,4 +83,9 @@
  */
 @property(nonatomic, copy) NSString *desc;
 
+/**
+ 角标
+*/
+@property(nonatomic, copy) NSString *badge;
+
 @end

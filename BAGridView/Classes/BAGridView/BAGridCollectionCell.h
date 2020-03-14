@@ -64,6 +64,7 @@
 @interface BAGridCollectionCell : UICollectionViewCell
 
 @property(nonatomic, strong) BAGridView_Config *config;
+
 /**
  placdholder 图片
  */

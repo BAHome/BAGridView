@@ -28,6 +28,13 @@ typedef NS_ENUM(NSUInteger, BAGridViewType) {
     BAGridViewTypeTitleDesc
 };
 
+typedef NS_ENUM(NSUInteger, BAGridViewBadgeType) {
+    // 默认：和 iPhone 桌面 APP 默认角标处理一致，角标的 centerY 和右边距离图片右边为高度的一半，宽度往左边伸展
+    kBAGridViewBadgeType_Default = 0,
+    // 角标的圆心为图片的右上角，宽高向两边伸展
+    kBAGridViewBadgeType_Center,
+};
+
 /**
  BAGridView 回调
  
@@ -150,6 +157,48 @@ typedef void (^BAGridViewBlock)(BAGridItemModel *model, NSIndexPath *indexPath);
 图片高度
 */
 @property(nonatomic, assign) CGFloat ba_gridView_imageHeight;
+
+#pragma mark - 2020-03-13 新增 badge
+
+/**
+badge：badge Type，默认：见 BAGridViewBadgeType 注释
+*/
+@property(nonatomic, assign) BAGridViewBadgeType ba_gridView_badgeType;
+
+/**
+badge：badge Font，默认：系统字体 12
+*/
+@property(nonatomic, strong) UIFont *ba_gridView_badgeFont;
+
+/**
+badge：badge BgColor，默认：红色
+*/
+@property(nonatomic, strong) UIColor *ba_gridView_badgeBgColor;
+
+/**
+badge：badge TextColor，默认：白色
+*/
+@property(nonatomic, strong) UIColor *ba_gridView_badgeTextColor;
+
+/**
+badge：badge Height，默认：20
+*/
+@property(nonatomic, assign) CGFloat ba_gridView_badgeHeight;
+
+/**
+badge：badge Offset，默认：0,0，正值：往右往上，负值：往左往下
+*/
+@property(nonatomic, assign) CGPoint ba_gridView_badgeOffsetPoint;
+
+/**
+badge：badge RectCorners，默认：所有角度 UIRectCornerAllCorners
+*/
+@property(nonatomic, assign) UIRectCorner ba_gridView_badgeRectCorners;
+
+/**
+badge：badge CornerRadius，默认：高度/2.0
+*/
+@property(nonatomic, assign) CGFloat ba_gridView_badgeCornerRadius;
 
 
 @end

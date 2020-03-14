@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-                    "1.1.5 新增自定义 图片的宽高"
+                    "1.1.6 新增自定义 角标"
                    DESC
 
   spec.homepage     = "https://github.com/BAHome/BAGridView"
