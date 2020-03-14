@@ -26,6 +26,7 @@ Pod::Spec.new do |spec|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
                     "1.1.6 新增自定义 角标"
+                    DESC
 
   spec.homepage     = "https://github.com/BAHome/BAGridView"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
