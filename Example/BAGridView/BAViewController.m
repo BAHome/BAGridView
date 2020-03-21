@@ -392,7 +392,9 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
             model.titleString = titleArray[i];
             
             if (config.gridViewType == BAGridViewTypeImageTitle) {
-                model.badge = @(BAKit_RandomNumber(2000)).stringValue;
+                NSInteger a = BAKit_RandomNumber(2000);
+//                model.badge = @(BAKit_RandomNumber(2000)).stringValue;
+                model.badge = a == 0 ? @"": @(a).stringValue;
                 if (i == 1) {
                     model.badge = @"新功能";
                 }
