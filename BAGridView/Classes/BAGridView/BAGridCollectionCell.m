@@ -107,6 +107,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
         self.imageView.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
         
         if (self.config.model.badge.length > 0) {
+            self.badgeButton.hidden = NO;
             min_h = self.config.ba_gridView_badgeHeight;
             UIFont *font = (self.config.ba_gridView_badgeFont) ? self.config.ba_gridView_badgeFont : self.badgeButton.titleLabel.font;
             CGPoint offsetPoint = self.config.ba_gridView_badgeOffsetPoint;
