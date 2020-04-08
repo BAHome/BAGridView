@@ -286,6 +286,9 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
 //        config.ba_gridView_badgeHeight = 30;
 //        config.ba_gridView_badgeOffsetPoint = CGPointMake(10, -10);
 
+        // item：图片圆角
+        config.ba_gridView_ImageCornerRadius = 20;
+
         config.dataArray = self.gridDataArray;
         //        config.ba_gridView_itemEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         //        config.minimumLineSpacing = 10;
@@ -330,6 +333,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         config.ba_gridView_backgroundColor = [UIColor yellowColor];
         // item：背景选中颜色，默认：无色
         config.ba_gridView_selectedBackgroundColor = [UIColor greenColor];
+        
         config.dataArray = self.gridDataArray2;
         
         _gridView2 = [BAGridView ba_creatGridViewWithGridViewConfig:config block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
