@@ -71,13 +71,13 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     [self.bgImageView addSubview:self.lineView_w];
     [self.bgImageView addSubview:self.lineView_h];
     [self.bgImageView addSubview:self.badgeButton];
-
     
-//    self.bgImageView.hidden = NO;
-//    self.imageView.hidden = NO;
-//    self.titleLabel.hidden = NO;
-//    self.badgeButton.hidden = NO;
-
+    
+    //    self.bgImageView.hidden = NO;
+    //    self.imageView.hidden = NO;
+    //    self.titleLabel.hidden = NO;
+    //    self.badgeButton.hidden = NO;
+    
     self.lineView_w.backgroundColor = BAKit_Color_Gray_11_pod;
     self.lineView_h.backgroundColor = BAKit_Color_Gray_11_pod;
 }
@@ -120,14 +120,14 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
             }
             min_y = CGRectGetMinY(self.imageView.frame) - min_h/2.0;
             self.badgeButton.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
-
+            
             CGPoint newPoint = self.badgeButton.center;
             newPoint.x += offsetPoint.x;
             newPoint.y += offsetPoint.y;
             self.badgeButton.center = newPoint;
             
             [self addCornerWithView:self.badgeButton byRoundingCorners:self.config.ba_gridView_badgeRectCorners cornerRadii:CGSizeMake(self.config.ba_gridView_badgeCornerRadius, self.config.ba_gridView_badgeCornerRadius)];
-
+            
         } else {
             self.badgeButton.hidden = YES;
         }
@@ -138,6 +138,9 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
         min_h = view_h - min_y;
         self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
         
+        if (self.config.ba_gridView_ImageCornerRadius > 0) {
+            [self addCornerWithView:self.imageView byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(self.config.ba_gridView_ImageCornerRadius, self.config.ba_gridView_ImageCornerRadius)];
+        }
     } else if (self.config.gridViewType == BAGridViewTypeTitleImage) {
         
         min_w = (self.config.ba_gridView_imageWidth > 0) ? self.config.ba_gridView_imageWidth : view_h * 0.4;
@@ -188,7 +191,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     
     view.layer.mask = shapeLayer;
     view.clipsToBounds = YES;
-
+    
 }
 
 #pragma mark - setter / getter
@@ -271,7 +274,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     if (self.config.gridViewType == BAGridViewTypeImageTitle) {
         if (config.model.badge.length > 0) {
             [self.badgeButton setTitle:config.model.badge forState:UIControlStateNormal];
-//            [self.badgeButton setTitle:@"99+" forState:UIControlStateNormal];
+            //            [self.badgeButton setTitle:@"99+" forState:UIControlStateNormal];
             self.badgeButton.titleLabel.font = config.ba_gridView_badgeFont;
             self.badgeButton.backgroundColor = config.ba_gridView_badgeBgColor;
             [self.badgeButton setTitleColor:config.ba_gridView_badgeTextColor forState:UIControlStateNormal];
@@ -284,7 +287,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     
     self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
     self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
-
+    
     [self layoutView];
 }
 

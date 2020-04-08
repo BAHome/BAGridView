@@ -201,4 +201,11 @@ badge：badge CornerRadius，默认：高度/2.0
 */
 @property(nonatomic, assign) CGFloat ba_gridView_badgeCornerRadius;
 
+#pragma mark - 2020-04-08 新增 图片圆角
+/**
+image：image CornerRadius，默认：0
+*/
+@property(nonatomic, assign) CGFloat ba_gridView_ImageCornerRadius;
+
+
 @end
