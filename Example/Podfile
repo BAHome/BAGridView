@@ -5,9 +5,4 @@ platform :ios, '8.0'
 target 'BAGridView_Example' do
   pod 'BAGridView', :path => '../'
 
-  target 'BAGridView_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
