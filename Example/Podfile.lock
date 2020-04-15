@@ -1,15 +1,15 @@
 PODS:
-  - BAGridView (1.1.8):
+  - BAGridView (1.1.9):
     - SDWebImage
-  - SDWebImage (5.1.1):
-    - SDWebImage/Core (= 5.1.1)
-  - SDWebImage/Core (5.1.1)
+  - SDWebImage (5.7.1):
+    - SDWebImage/Core (= 5.7.1)
+  - SDWebImage/Core (5.7.1)
 
 DEPENDENCIES:
   - BAGridView (from `../`)
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  trunk:
     - SDWebImage
 
 EXTERNAL SOURCES:
@@ -17,9 +17,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BAGridView: 7d12eeb5b9627120041bdd360be5b53870eb505f
-  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  BAGridView: 92fef17bdaa16a9362a9824cc05ed8d21217a4e7
+  SDWebImage: 5d4cf6afccd9ac1d2ee701ed0c4917cbb1b80536
 
-PODFILE CHECKSUM: 5e94512e86b1398e1d766d9f53fb1dc020b9b9d6
+PODFILE CHECKSUM: 0d15c587b29c986e4b203d3ba398dcd2b80ab7a9
 
-COCOAPODS: 1.9.0.beta.2
+COCOAPODS: 1.9.1

@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "BAGridView"
-  spec.version      = "1.1.9"
+  spec.version      = "1.2.0"
   spec.summary      = "支付宝首页 九宫格 布局封装，可以自定义多种样式，自定义分割线显示/隐藏、颜色等功能应有尽有！"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-                    "1.1.9 增加图片圆角【2020-4-09】"
+                    "1.2.0 增加图片填充样式【2020-4-15】"
                     DESC
 
   spec.homepage     = "https://github.com/BAHome/BAGridView"
@@ -65,7 +65,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  spec.platform     = :ios, "8.0"
+  spec.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"

@@ -182,7 +182,9 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     
 }
 
-- (void)addCornerWithView:(UIView *)view byRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii {
+- (void)addCornerWithView:(UIView *)view
+        byRoundingCorners:(UIRectCorner)corners
+              cornerRadii:(CGSize)cornerRadii {
     //绘制圆角 要设置的圆角 使用“|”来组合
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:corners cornerRadii:cornerRadii];
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
@@ -191,11 +193,9 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     
     view.layer.mask = shapeLayer;
     view.clipsToBounds = YES;
-    
 }
 
 #pragma mark - setter / getter
-
 
 - (UIImageView *)bgImageView {
     if (!_bgImageView) {
@@ -221,6 +221,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
         _imageView = [UIImageView new];
         _imageView.backgroundColor = BAKit_Color_Clear_pod;
         _imageView.userInteractionEnabled = YES;
+        _imageView.clipsToBounds = YES;
     }
     return _imageView;
 }
@@ -287,6 +288,8 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     
     self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
     self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
+    
+    self.imageView.contentMode = self.config.ba_gridView_ImageContentMode;
     
     [self layoutView];
 }
