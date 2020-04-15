@@ -207,5 +207,12 @@ image：image CornerRadius，默认：0
 */
 @property(nonatomic, assign) CGFloat ba_gridView_ImageCornerRadius;
 
+#pragma mark - 2020-04-15 新增 图片填充样式
+/**
+image：image contentMode，默认：UIViewContentModeScaleToFill
+*/
+@property(nonatomic, assign) UIViewContentMode ba_gridView_ImageContentMode;
+
+
 
 @end
