@@ -1,25 +1,22 @@
 PODS:
   - BAGridView (1.1.9):
     - SDWebImage
-  - SDWebImage (5.7.1):
-    - SDWebImage/Core (= 5.7.1)
-  - SDWebImage/Core (5.7.1)
+  - SDWebImage (5.7.2):
+    - SDWebImage/Core (= 5.7.2)
+  - SDWebImage/Core (5.7.2)
 
 DEPENDENCIES:
-  - BAGridView (from `../`)
+  - BAGridView
 
 SPEC REPOS:
   trunk:
+    - BAGridView
     - SDWebImage
-
-EXTERNAL SOURCES:
-  BAGridView:
-    :path: "../"
 
 SPEC CHECKSUMS:
   BAGridView: 92fef17bdaa16a9362a9824cc05ed8d21217a4e7
-  SDWebImage: 5d4cf6afccd9ac1d2ee701ed0c4917cbb1b80536
+  SDWebImage: d9ea4959d99c52276dfada481987018fcaea3d58
 
-PODFILE CHECKSUM: 0d15c587b29c986e4b203d3ba398dcd2b80ab7a9
+PODFILE CHECKSUM: 4d01d23e504e2acdde74928ae3caa5a1cd6bb1b6
 
 COCOAPODS: 1.9.1
