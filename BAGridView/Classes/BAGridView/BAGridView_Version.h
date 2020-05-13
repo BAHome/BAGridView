@@ -22,6 +22,11 @@
  OC 版 ：https://github.com/BAHome/BAGridView
  
 
+ 最新更新时间：2020-05-13 【倒叙】<br>
+ 最新Version：【Version：1.2.1】<br>
+ 更新内容：<br>
+ 1.2.1.1、修复 scrollEnabled 无效的问题！详见：code <br>
+ 
  最新更新时间：2020-04-15 【倒叙】<br>
  最新Version：【Version：1.2.0】<br>
  更新内容：<br>

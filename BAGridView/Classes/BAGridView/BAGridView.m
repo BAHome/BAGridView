@@ -18,6 +18,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, weak) NSIndexPath  *selectIndexPath;
+@property(nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 /**
  placdholder 图片
@@ -27,14 +28,6 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 @end
 
 @implementation BAGridView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setupUI];
-    }
-    return self;
-}
 
 /**
  快速创建宫格
@@ -53,7 +46,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     tempView.config = config;
     tempView.config.ba_gridViewBlock = block;
     
-    [tempView setupUI];
+    [tempView initUI];
     return tempView;
 }
 
@@ -65,21 +58,16 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     if (config == nil) {
         config = [[BAGridView_Config alloc] init];
     }
+    tempView.placdholderImage = placdholderImage;
     tempView.config = config;
     tempView.config.ba_gridViewBlock = block;
-    tempView.placdholderImage = placdholderImage;
     
-    [tempView setupUI];
+    [tempView initUI];
     return tempView;
 }
 
-- (void)setupUI {
-    self.backgroundColor = BAKit_Color_Clear_pod;
+- (void)initUI {
     self.collectionView.hidden = NO;
-    self.backgroundColor = self.config.ba_gridView_backgroundColor;
-    if (!self.config.showLineView) {
-        self.config.ba_gridView_lineWidth = 0;
-    }
 }
 
 - (void)layoutSubviews {
@@ -168,26 +156,28 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 - (void)setConfig:(BAGridView_Config *)config {
     _config = config;
     
-    [self.collectionView reloadData];
-}
+    self.backgroundColor = config.ba_gridView_backgroundColor;
+    if (!config.showLineView) {
+        self.config.ba_gridView_lineWidth = 0;
+    }
+    self.collectionView.scrollEnabled = config.isScrollEnabled;
 
-- (void)setPlacdholderImage:(UIImage *)placdholderImage {
-    _placdholderImage = placdholderImage;
+    self.flowLayout.minimumLineSpacing = self.config.minimumLineSpacing;
+    self.flowLayout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
     
+    self.collectionView.collectionViewLayout = self.flowLayout;
     [self.collectionView reloadData];
 }
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-        flowLayout.minimumLineSpacing = self.config.minimumLineSpacing;
-        flowLayout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
+        self.flowLayout = flowLayout;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = BAKit_Color_Clear_pod;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.scrollEnabled = self.config.isScrollEnabled;
         _collectionView.alwaysBounceVertical = YES;
 
         [_collectionView registerClass:[BAGridCollectionCell class] forCellWithReuseIdentifier:kCellID];
