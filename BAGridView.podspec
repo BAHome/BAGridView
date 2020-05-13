@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "BAGridView"
-  spec.version      = "1.2.0"
+  spec.version      = "1.2.1"
   spec.summary      = "支付宝首页 九宫格 布局封装，可以自定义多种样式，自定义分割线显示/隐藏、颜色等功能应有尽有！"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-                    "1.2.0 增加图片填充样式【2020-4-15】"
+                    【2020-5-13】1.2.1 修复 scrollEnabled 无效的问题！
                     DESC
 
   spec.homepage     = "https://github.com/BAHome/BAGridView"
