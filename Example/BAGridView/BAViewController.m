@@ -273,7 +273,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         // item：title Font，默认：图文样式下 16，两行文字下（上25，下12）
         config.ba_gridView_titleFont = [UIFont boldSystemFontOfSize:15];
         // item：背景颜色，默认：BAKit_Color_White
-        config.ba_gridView_backgroundColor = [UIColor yellowColor];
+        config.ba_gridView_backgroundColor = UIColor.yellowColor;
         // item：背景选中颜色，默认：无色
         config.ba_gridView_selectedBackgroundColor = BAKit_Color_Red_pod;
         // badge
