@@ -202,6 +202,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
         _bgImageView = [UIImageView new];
         _bgImageView.backgroundColor = BAKit_Color_Clear_pod;
         _bgImageView.userInteractionEnabled = YES;
+        _bgImageView.clipsToBounds = YES;
     }
     return _bgImageView;
 }
@@ -290,6 +291,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
     
     self.imageView.contentMode = self.config.ba_gridView_ImageContentMode;
+    self.bgImageView.contentMode = self.config.ba_gridView_bgImageContentMode;
     
     [self layoutView];
 }

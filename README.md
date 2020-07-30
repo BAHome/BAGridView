@@ -270,6 +270,12 @@ block:(BAGridViewBlock)block;
 欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
 
+
+ 最新更新时间：2020-07-30 【倒叙】<br>
+ 最新Version：【Version：1.2.2】<br>
+ 更新内容：<br>
+ 1.2.2.1、 新增背景图片填充模式！详见：code <br>
+ 
 最新更新时间：2020-05-13 【倒叙】<br>
 最新Version：【Version：1.2.1】<br>
 更新内容：<br>
