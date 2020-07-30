@@ -288,6 +288,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
 
         // item：图片圆角
         config.ba_gridView_ImageCornerRadius = 20;
+        config.ba_gridView_bgImageContentMode = UIViewContentModeScaleAspectFill;
 
         config.dataArray = self.gridDataArray;
         //        config.ba_gridView_itemEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -388,7 +389,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         for (NSInteger i = 0; i < titleArray.count; i++) {
             BAGridItemModel *model = [BAGridItemModel new];
             if (imageNameArray.count > 0) {
-                model.imageName = imageNameArray[i];
+//                model.imageName = imageNameArray[i];
             }
             if (bgImageNameArray.count > 0) {
                 model.bgImageName = bgImageNameArray[i];

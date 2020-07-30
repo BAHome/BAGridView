@@ -213,6 +213,11 @@ image：image contentMode，默认：UIViewContentModeScaleToFill
 */
 @property(nonatomic, assign) UIViewContentMode ba_gridView_ImageContentMode;
 
+#pragma mark - 2020-07-30 新增 背景图片填充样式
+/**
+bgImage：bgiimage contentMode，默认：UIViewContentModeScaleToFill
+*/
+@property(nonatomic, assign) UIViewContentMode ba_gridView_bgImageContentMode;
 
 
 @end
