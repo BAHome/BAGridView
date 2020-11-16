@@ -18,6 +18,7 @@
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		C405BDE9256229CB00B624AD /* BATestView.m in Sources */ = {isa = PBXBuildFile; fileRef = C405BDE8256229CB00B624AD /* BATestView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A85C1A9CE6F6676920E1010A /* Pods-BAGridView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAGridView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-BAGridView_Tests/Pods-BAGridView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD605E8018BC3534CD4E1330 /* Pods-BAGridView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAGridView_Example.release.xcconfig"; path = "Target Support Files/Pods-BAGridView_Example/Pods-BAGridView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C405BDE7256229CB00B624AD /* BATestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATestView.h; sourceTree = "<group>"; };
+		C405BDE8256229CB00B624AD /* BATestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BATestView.m; sourceTree = "<group>"; };
 		D4A4BCCA54BBD34085E01F2E /* BAGridView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BAGridView.podspec; path = ../BAGridView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DEC385A27A7BE84A3CCB92D4 /* Pods-BAGridView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BAGridView_Example.debug.xcconfig"; path = "Target Support Files/Pods-BAGridView_Example/Pods-BAGridView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		ED7997C711E790792BBEF50D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -103,6 +106,8 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* BAViewController.h */,
 				6003F5A6195388D20070C39A /* BAViewController.m */,
+				C405BDE7256229CB00B624AD /* BATestView.h */,
+				C405BDE8256229CB00B624AD /* BATestView.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -243,11 +248,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BAGridView_Example/Pods-BAGridView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BAGridView/BAGridView.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BAGridView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* BAAppDelegate.m in Sources */,
+				C405BDE9256229CB00B624AD /* BATestView.m in Sources */,
 				6003F5A7195388D20070C39A /* BAViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

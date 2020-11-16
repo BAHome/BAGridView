@@ -67,6 +67,4 @@
 
 @property(nonatomic, strong) BAGridView_Config *config;
 
-
-
 @end

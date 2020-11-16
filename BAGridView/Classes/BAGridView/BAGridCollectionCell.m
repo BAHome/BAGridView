@@ -197,6 +197,50 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
 
 #pragma mark - setter / getter
 
+- (void)setPlacdholderImage:(UIImage *)placdholderImage {
+    _placdholderImage = placdholderImage;
+}
+
+- (void)setConfig:(BAGridView_Config *)config {
+    _config = config;
+    
+    if (self.config.gridViewType == BAGridViewTypeBgImageTitle) {
+        if (config.model.bgImageName.length > 0 && [NSString ba_regularIsUrl:config.model.bgImageName]) {
+            [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:config.model.bgImageName] placeholderImage:self.placdholderImage];
+        } else {
+            self.bgImageView.image = [UIImage imageNamed:config.model.bgImageName];
+        }
+    } else {
+        if (config.model.imageName.length > 0 && [NSString ba_regularIsUrl:config.model.imageName]) {
+            [self.imageView sd_setImageWithURL:[NSURL URLWithString:config.model.imageName] placeholderImage:self.placdholderImage];
+        } else {
+            self.imageView.image = [UIImage imageNamed:config.model.imageName];
+        }
+    }
+    
+    if (self.config.gridViewType == BAGridViewTypeImageTitle) {
+        if (config.model.badge.length > 0) {
+            [self.badgeButton setTitle:config.model.badge forState:UIControlStateNormal];
+            //            [self.badgeButton setTitle:@"99+" forState:UIControlStateNormal];
+            self.badgeButton.titleLabel.font = config.ba_gridView_badgeFont;
+            self.badgeButton.backgroundColor = config.ba_gridView_badgeBgColor;
+            [self.badgeButton setTitleColor:config.ba_gridView_badgeTextColor forState:UIControlStateNormal];
+        }
+    }
+    
+    self.titleLabel.text = config.model.titleString;
+    self.titleLabel.font = config.ba_gridView_titleFont;
+    self.titleLabel.textColor = config.ba_gridView_titleColor;
+    
+    self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
+    self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
+    
+    self.imageView.contentMode = self.config.ba_gridView_ImageContentMode;
+    self.bgImageView.contentMode = self.config.ba_gridView_bgImageContentMode;
+    
+    [self layoutView];
+}
+
 - (UIImageView *)bgImageView {
     if (!_bgImageView) {
         _bgImageView = [UIImageView new];
@@ -251,50 +295,5 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     }
     return _badgeButton;
 }
-
-- (void)setPlacdholderImage:(UIImage *)placdholderImage {
-    _placdholderImage = placdholderImage;
-}
-
-- (void)setConfig:(BAGridView_Config *)config {
-    _config = config;
-    
-    if (self.config.gridViewType == BAGridViewTypeBgImageTitle) {
-        if (config.model.bgImageName.length > 0 && [NSString ba_regularIsUrl:config.model.bgImageName]) {
-            [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:config.model.bgImageName] placeholderImage:self.placdholderImage];
-        } else {
-            self.bgImageView.image = [UIImage imageNamed:config.model.bgImageName];
-        }
-    } else {
-        if (config.model.imageName.length > 0 && [NSString ba_regularIsUrl:config.model.imageName]) {
-            [self.imageView sd_setImageWithURL:[NSURL URLWithString:config.model.imageName] placeholderImage:self.placdholderImage];
-        } else {
-            self.imageView.image = [UIImage imageNamed:config.model.imageName];
-        }
-    }
-    
-    if (self.config.gridViewType == BAGridViewTypeImageTitle) {
-        if (config.model.badge.length > 0) {
-            [self.badgeButton setTitle:config.model.badge forState:UIControlStateNormal];
-            //            [self.badgeButton setTitle:@"99+" forState:UIControlStateNormal];
-            self.badgeButton.titleLabel.font = config.ba_gridView_badgeFont;
-            self.badgeButton.backgroundColor = config.ba_gridView_badgeBgColor;
-            [self.badgeButton setTitleColor:config.ba_gridView_badgeTextColor forState:UIControlStateNormal];
-        }
-    }
-    
-    self.titleLabel.text = config.model.titleString;
-    self.titleLabel.font = config.ba_gridView_titleFont;
-    self.titleLabel.textColor = config.ba_gridView_titleColor;
-    
-    self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
-    self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
-    
-    self.imageView.contentMode = self.config.ba_gridView_ImageContentMode;
-    self.bgImageView.contentMode = self.config.ba_gridView_bgImageContentMode;
-    
-    [self layoutView];
-}
-
 
 @end

@@ -271,6 +271,11 @@ block:(BAGridViewBlock)block;
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
 
 
+最新更新时间：2020-11-16 【倒叙】<br>
+最新Version：【Version：1.2.3】<br>
+更新内容：<br>
+1.2.3.1 新增自定义横向滚动排列样式！
+
  最新更新时间：2020-07-30 【倒叙】<br>
  最新Version：【Version：1.2.2】<br>
  更新内容：<br>

@@ -9,6 +9,7 @@
 #import "BAViewController.h"
 #import "BAKit_BAGridView.h"
 #import "BAGridView_Config.h"
+#import "BATestView.h"
 
 static NSString * const kCellID = @"ViewControllerCell";
 
@@ -173,6 +174,8 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
             break;
         case 2: {
             self.ba_GridViewConfig2.gridViewType = BAGridViewTypeTitleDesc;
+            self.ba_GridViewConfig2.isFlyHorizontalFlowLauyout = NO;
+
             self.tableView.tableFooterView = [UIView new];
             
             UIView *footView = [self.view viewWithTag:102];
@@ -184,6 +187,26 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
                 footView.tag = 102;
                 self.gridView2.frame = CGRectMake(30, 0, BAKit_SCREEN_WIDTH - 30 * 2, kGridView_H2);
                 [footView addSubview:self.gridView2];
+            }
+            
+            self.tableView.tableFooterView = footView;
+        }
+            break;
+        case 3: {
+            self.tableView.tableFooterView = UIView.new;
+            
+            NSInteger tag = 103;
+            UIView *footView = [self.view viewWithTag:tag];
+            
+            if (!footView) {
+                BATestView *view = BATestView.new;
+                view.frame = CGRectMake(30, 0, BAKit_SCREEN_WIDTH - 30 * 2, kGridView_itemHeight2 * 2);
+
+                footView = UIView.new;
+                footView.backgroundColor = [UIColor redColor];
+                footView.frame = CGRectMake(0, 20, BAKit_SCREEN_WIDTH, kGridView_itemHeight2 * 2);
+                footView.tag = tag;
+                [footView addSubview:view];
             }
             
             self.tableView.tableFooterView = footView;
@@ -230,7 +253,11 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
 
 - (NSArray *)dataArray {
     if (!_dataArray) {
-        _dataArray = @[@"图上文下 / 文上图下(点击更换样式)", @"带背景图片，中间是文字", @"两行文字"];
+        _dataArray = @[@"图上文下 / 文上图下(点击更换样式)",
+                       @"带背景图片，中间是文字",
+                       @"两行文字",
+                       @"自定义横向滚动排列【左右滑动试试】",
+        ];
     }
     return _dataArray;
 }
@@ -311,7 +338,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         BAGridView_Config *config = self.ba_GridViewConfig2;
         
         config.showLineView = YES;
-        
+        config.isFlyHorizontalFlowLauyout = YES;
         // item：分割线颜色，默认：BAKit_Color_Gray_11【BAKit_Color_RGB(248, 248, 248)】
         config.ba_gridView_lineColor = BAKit_Color_Red_pod;
         // item：每行 item 的个数，默认为4个
@@ -415,8 +442,16 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
     if (!_gridDataArray2) {
         _gridDataArray2 = @[].mutableCopy;
         
-        NSArray *titleArray = @[@"200", @"20", @"200", @"10", ];
-        NSArray *descArray = @[@"新增积分总量", @"返还积分总量", @"全返单元总量", @"每单元返还积分"];
+        NSArray *titleArray = @[@"200", @"20", @"200", @"10", @"300", @"30", @"10", @"300", @"30", ];
+        NSArray *descArray = @[@"1新增积分总量",
+                               @"2返还积分总量",
+                               @"3全返单元总量",
+                               @"4每单元返还积分",
+                               @"5全返单元总量",
+                               @"6每单元返还积分",
+                               @"7每单元返还积分",
+                               @"8全返单元总量",
+                               @"9每单元返还积分"];
         
         for (NSInteger i = 0; i < titleArray.count; i++) {
             BAGridItemModel *model = [BAGridItemModel new];

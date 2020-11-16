@@ -13,6 +13,7 @@
 #import "BAGridCollectionCell.h"
 #import "BAGridItemModel.h"
 #import "BAGridView.h"
+#import "BAGridViewFlyHorizontalFlowLauyout.h"
 #import "BAGridViewTypeTitleDescCell.h"
 #import "BAGridView_Config.h"
 #import "BAGridView_Version.h"

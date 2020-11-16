@@ -9,6 +9,7 @@
 #import "BAGridView.h"
 #import "BAGridCollectionCell.h"
 #import "BAGridViewTypeTitleDescCell.h"
+#import "BAGridViewFlyHorizontalFlowLauyout.h"
 
 
 static NSString * const kCellID = @"BAGridCollectionCell";
@@ -19,6 +20,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, weak) NSIndexPath  *selectIndexPath;
 @property(nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property(nonatomic, strong) BAGridViewFlyHorizontalFlowLauyout *flyHorizontalFlowLauyout;
 
 /**
  placdholder 图片
@@ -85,15 +87,13 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    BAGridCollectionCell *cell;
-    BAGridViewTypeTitleDescCell *cell2;
     [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     self.config.model = self.config.dataArray[indexPath.row];
     if (self.config.gridViewType == BAGridViewTypeImageTitle ||
         self.config.gridViewType == BAGridViewTypeTitleImage ||
         self.config.gridViewType == BAGridViewTypeBgImageTitle
         ) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
+        BAGridCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
         cell.backgroundColor = BAKit_Color_Clear_pod;
         if (self.config.gridViewType != BAGridViewTypeBgImageTitle) {
             cell.placdholderImage = self.placdholderImage;
@@ -101,13 +101,13 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         cell.config = self.config;
         return cell;
     } else if (self.config.gridViewType == BAGridViewTypeTitleDesc) {
-        cell2 = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID2 forIndexPath:indexPath];
+        BAGridViewTypeTitleDescCell *cell2 = [collectionView dequeueReusableCellWithReuseIdentifier:kCellID2 forIndexPath:indexPath];
         cell2.backgroundColor = BAKit_Color_Clear_pod;
         cell2.config = self.config;
         return cell2;
+    } else {
+        return UICollectionViewCell.new;
     }
-    
-    return UICollectionViewCell.new;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -162,15 +162,34 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     }
     self.collectionView.scrollEnabled = config.isScrollEnabled;
 
-    self.flowLayout.minimumLineSpacing = self.config.minimumLineSpacing;
-    self.flowLayout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
-    
-    self.collectionView.collectionViewLayout = self.flowLayout;
+    if (config.isFlyHorizontalFlowLauyout) {
+//        self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        self.flyHorizontalFlowLauyout.minimumLineSpacing = self.config.minimumLineSpacing;
+        self.flyHorizontalFlowLauyout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
+
+        self.collectionView.collectionViewLayout = self.flyHorizontalFlowLauyout;
+        self.collectionView.pagingEnabled = YES;
+        self.collectionView.showsHorizontalScrollIndicator = NO;
+    } else {
+        self.flowLayout.minimumLineSpacing = self.config.minimumLineSpacing;
+        self.flowLayout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
+        
+        self.collectionView.collectionViewLayout = self.flowLayout;
+    }
+//    self.flowLayout.minimumLineSpacing = self.config.minimumLineSpacing;
+//    self.flowLayout.minimumInteritemSpacing = self.config.minimumInteritemSpacing;
+//
+//    self.collectionView.collectionViewLayout = self.flowLayout;
+//
     [self.collectionView reloadData];
 }
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
+        BAGridViewFlyHorizontalFlowLauyout *flyHorizontalFlowLauyout = BAGridViewFlyHorizontalFlowLauyout.new;
+        flyHorizontalFlowLauyout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        self.flyHorizontalFlowLauyout = flyHorizontalFlowLauyout;
+        
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         self.flowLayout = flowLayout;
         
@@ -179,6 +198,7 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.alwaysBounceVertical = YES;
+        _collectionView.bounces = NO;
 
         [_collectionView registerClass:[BAGridCollectionCell class] forCellWithReuseIdentifier:kCellID];
         [_collectionView registerClass:[BAGridViewTypeTitleDescCell class] forCellWithReuseIdentifier:kCellID2];

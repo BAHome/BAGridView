@@ -25,17 +25,23 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self setupUI];
+        [self initUI];
     }
     return self;
 }
 
-- (void)setupUI {
+- (void)initUI {
     self.titleLabel.hidden = NO;
     self.descLabel.hidden = NO;
     
     self.lineView_w.backgroundColor = BAKit_Color_Gray_11_pod;
     self.lineView_h.backgroundColor = BAKit_Color_Gray_11_pod;
+    
+    [self.contentView addSubview:_titleLabel];
+    [self.contentView addSubview:_descLabel];
+    [self.contentView addSubview:_lineView_w];
+    [self.contentView addSubview:_lineView_h];
+
 }
 
 - (void)layoutSubviews {
@@ -74,46 +80,6 @@
 
 #pragma mark - setter / getter
 
-- (UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [UILabel new];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont systemFontOfSize:25];
-        
-        [self addSubview:_titleLabel];
-    }
-    return _titleLabel;
-}
-
-- (UILabel *)descLabel {
-    if (!_descLabel) {
-        _descLabel = [UILabel new];
-        self.descLabel.textAlignment = NSTextAlignmentCenter;
-        self.descLabel.font = [UIFont systemFontOfSize:12];
-        
-        [self addSubview:_descLabel];
-    }
-    return _descLabel;
-}
-
-- (UIView *)lineView_w {
-    if (!_lineView_w) {
-        _lineView_w = [UIView new];
-        
-        [self.contentView addSubview:_lineView_w];
-    }
-    return _lineView_w;
-}
-
-- (UIView *)lineView_h {
-    if (!_lineView_h) {
-        _lineView_h = [UIView new];
-        
-        [self.contentView addSubview:_lineView_h];
-    }
-    return _lineView_h;
-}
-
 - (void)setConfig:(BAGridView_Config *)config {
     _config = config;
     
@@ -127,7 +93,38 @@
     
     self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
     self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
+}
 
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [UILabel new];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.font = [UIFont systemFontOfSize:25];
+    }
+    return _titleLabel;
+}
+
+- (UILabel *)descLabel {
+    if (!_descLabel) {
+        _descLabel = [UILabel new];
+        self.descLabel.textAlignment = NSTextAlignmentCenter;
+        self.descLabel.font = [UIFont systemFontOfSize:12];
+    }
+    return _descLabel;
+}
+
+- (UIView *)lineView_w {
+    if (!_lineView_w) {
+        _lineView_w = [UIView new];
+    }
+    return _lineView_w;
+}
+
+- (UIView *)lineView_h {
+    if (!_lineView_h) {
+        _lineView_h = [UIView new];
+    }
+    return _lineView_h;
 }
 
 
