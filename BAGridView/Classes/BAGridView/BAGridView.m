@@ -152,6 +152,14 @@ static NSString * const kCellID2 = @"BAGridViewTypeTitleDescCell";
     return self.config.ba_gridView_itemEdgeInsets;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.collectionView) {
+        self.config.onGridScrollViewDidScroll ? self.config.onGridScrollViewDidScroll(scrollView):nil;
+    }
+}
+
 #pragma mark - setter, getter
 - (void)setConfig:(BAGridView_Config *)config {
     _config = config;

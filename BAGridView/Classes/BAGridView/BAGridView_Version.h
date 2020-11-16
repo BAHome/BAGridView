@@ -22,9 +22,9 @@
  OC 版 ：https://github.com/BAHome/BAGridView
  
  最新更新时间：2020-11-16 【倒叙】<br>
- 最新Version：【Version：1.2.3】<br>
+ 最新Version：【Version：1.2.4】<br>
  更新内容：<br>
- 1.2.3.1 新增自定义横向滚动排列样式！
+ 1.2.4.1 新增自定义横向滚动排列样式！
 
  最新更新时间：2020-07-30 【倒叙】<br>
  最新Version：【Version：1.2.2】<br>

@@ -231,5 +231,9 @@ bgImage：bgiimage contentMode，默认：UIViewContentModeScaleToFill
 */
 @property(nonatomic, assign) BOOL isFlyHorizontalFlowLauyout;
 
+/**
+ UIScrollView 的滚动代理
+ */
+@property(nonatomic, copy) void (^onGridScrollViewDidScroll)(UIScrollView *scrollView);
 
 @end

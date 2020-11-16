@@ -23,6 +23,17 @@ static NSString * const kCellID = @"ViewControllerCell";
 #define kGridView_H2          BAKit_getColumnCountWithArrayAndRowCount_pod(self.gridDataArray2, kGridView_rowCount2) * kGridView_itemHeight2
 
 CG_INLINE NSInteger
+BAKit_GetScrollViewCurrentPage(UIScrollView *scrollView) {
+    if (scrollView.frame.size.width == 0 || scrollView.frame.size.height == 0) {
+        return 0;
+    }
+    NSInteger index = 0;
+    index = roundf((scrollView.contentOffset.x) / scrollView.frame.size.width);
+    
+    return MAX(0, index);
+}
+
+CG_INLINE NSInteger
 BAKit_RandomNumber(NSInteger i){
     return arc4random() % i;
 }
@@ -175,7 +186,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         case 2: {
             self.ba_GridViewConfig2.gridViewType = BAGridViewTypeTitleDesc;
             self.ba_GridViewConfig2.isFlyHorizontalFlowLauyout = NO;
-
+            
             self.tableView.tableFooterView = [UIView new];
             
             UIView *footView = [self.view viewWithTag:102];
@@ -193,22 +204,25 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         }
             break;
         case 3: {
+            self.ba_GridViewConfig2.gridViewType = BAGridViewTypeTitleDesc;
+            self.ba_GridViewConfig2.isFlyHorizontalFlowLauyout = YES;
+            
             self.tableView.tableFooterView = UIView.new;
             
             NSInteger tag = 103;
             UIView *footView = [self.view viewWithTag:tag];
             
             if (!footView) {
-                BATestView *view = BATestView.new;
-                view.frame = CGRectMake(30, 0, BAKit_SCREEN_WIDTH - 30 * 2, kGridView_itemHeight2 * 2);
-
+                //                BATestView *view = BATestView.new;
+                //                view.frame = CGRectMake(30, 0, BAKit_SCREEN_WIDTH - 30 * 2, kGridView_itemHeight2 * 2);
+                self.gridView2.frame = CGRectMake(30, 0, BAKit_SCREEN_WIDTH - 30 * 2, kGridView_itemHeight2 * 2);
+                
                 footView = UIView.new;
                 footView.backgroundColor = [UIColor redColor];
                 footView.frame = CGRectMake(0, 20, BAKit_SCREEN_WIDTH, kGridView_itemHeight2 * 2);
                 footView.tag = tag;
-                [footView addSubview:view];
+                [footView addSubview:self.gridView2];
             }
-            
             self.tableView.tableFooterView = footView;
         }
             break;
@@ -307,16 +321,16 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         config.ba_gridView_badgeType = kBAGridViewBadgeType_Center;
         config.ba_gridView_badgeFont = [UIFont systemFontOfSize:10];
         config.ba_gridView_badgeRectCorners = UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomRight;
-//        config.ba_gridView_badgeCornerRadius = 3;
-//        config.ba_gridView_badgeBgColor = UIColor.orangeColor;
-//        config.ba_gridView_badgeTextColor = UIColor.greenColor;
-//        config.ba_gridView_badgeHeight = 30;
-//        config.ba_gridView_badgeOffsetPoint = CGPointMake(10, -10);
-
+        //        config.ba_gridView_badgeCornerRadius = 3;
+        //        config.ba_gridView_badgeBgColor = UIColor.orangeColor;
+        //        config.ba_gridView_badgeTextColor = UIColor.greenColor;
+        //        config.ba_gridView_badgeHeight = 30;
+        //        config.ba_gridView_badgeOffsetPoint = CGPointMake(10, -10);
+        
         // item：图片圆角
         config.ba_gridView_ImageCornerRadius = 20;
         config.ba_gridView_bgImageContentMode = UIViewContentModeScaleAspectFill;
-
+        
         config.dataArray = self.gridDataArray;
         //        config.ba_gridView_itemEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         //        config.minimumLineSpacing = 10;
@@ -364,10 +378,18 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         
         config.dataArray = self.gridDataArray2;
         
-        _gridView2 = [BAGridView ba_creatGridViewWithGridViewConfig:config block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+        BAKit_WeakSelf
+        config.onGridScrollViewDidScroll = ^(UIScrollView *scrollView) {
             
+            NSInteger itemIndex = BAKit_GetScrollViewCurrentPage(scrollView);
+            itemIndex = itemIndex;
+            NSLog(@"itemIndex：%ld", (long)itemIndex);
+        };
+        _gridView2 = [BAGridView ba_creatGridViewWithGridViewConfig:config block:^(BAGridItemModel *model, NSIndexPath *indexPath) {
+            BAKit_StrongSelf
             BAKit_ShowAlertWithMsg_ios8(model.titleString);
         }];
+        
     }
     return _gridView2;
 }
@@ -416,7 +438,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         for (NSInteger i = 0; i < titleArray.count; i++) {
             BAGridItemModel *model = [BAGridItemModel new];
             if (imageNameArray.count > 0) {
-//                model.imageName = imageNameArray[i];
+                //                model.imageName = imageNameArray[i];
             }
             if (bgImageNameArray.count > 0) {
                 model.bgImageName = bgImageNameArray[i];
@@ -425,7 +447,7 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
             
             if (config.gridViewType == BAGridViewTypeImageTitle) {
                 NSInteger a = BAKit_RandomNumber(2000);
-//                model.badge = @(BAKit_RandomNumber(2000)).stringValue;
+                //                model.badge = @(BAKit_RandomNumber(2000)).stringValue;
                 model.badge = a == 0 ? @"": @(a).stringValue;
                 if (i == 1) {
                     model.badge = @"新功能";
