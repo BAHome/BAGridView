@@ -21,6 +21,11 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
  
+ 最新更新时间：2021-07-15 【倒叙】<br>
+ 最新Version：【Version：1.2.5】<br>
+ 更新内容：<br>
+ 1.2.5.1 新增 `NSMutableAttributedString` 标题和副标题！
+ 
  最新更新时间：2020-11-16 【倒叙】<br>
  最新Version：【Version：1.2.4】<br>
  更新内容：<br>

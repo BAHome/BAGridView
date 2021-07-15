@@ -249,13 +249,37 @@ block:(BAGridViewBlock)block;
     if (!_gridDataArray2) {
         _gridDataArray2 = @[].mutableCopy;
         
-        NSArray *titleArray = @[@"200", @"20", @"200", @"10", ];
-        NSArray *descArray = @[@"新增积分总量", @"返还积分总量", @"全返单元总量", @"每单元返还积分"];
+        NSArray *titleArray = @[@"200", @"20", @"200",
+                                @"10", @"￥3899989", @"30",
+                                @"10", @"300", @"30", ];
+        NSArray *descArray = @[@"1新增积分总量",
+                               @"2返还积分总量",
+                               @"3全返单元总量",
+                               @"4每单元返还积分",
+                               @"5全返单元总量",
+                               @"6每单元返还积分",
+                               @"7每单元返还积分",
+                               @"8全返单元总量",
+                               @"9每单元返还积分"];
         
         for (NSInteger i = 0; i < titleArray.count; i++) {
             BAGridItemModel *model = [BAGridItemModel new];
             model.desc = descArray[i];
-            model.titleString = titleArray[i];
+            if (i == 4) {
+                //初始化一个attriburitedString对象
+                NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:titleArray[i]];
+                //给这个属性添加一个属性前3个字符的背景颜色
+                NSRange orRange = NSMakeRange(0, 1);
+                [attributeString addAttributes:@{NSForegroundColorAttributeName:[UIColor orangeColor], NSFontAttributeName:[UIFont systemFontOfSize:11]} range:orRange];
+              
+                //添加多个属性
+                NSRange seRange = NSMakeRange(3, 2);
+                [attributeString addAttributes:@{ NSForegroundColorAttributeName: [UIColor redColor], NSBackgroundColorAttributeName: [UIColor blueColor]} range:seRange];
+                
+                model.titleAttributedString = attributeString;
+            } else {
+                model.titleString = titleArray[i];
+            }
             
             [_gridDataArray2 addObject:model];
         }
@@ -270,6 +294,10 @@ block:(BAGridViewBlock)block;
 欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
 
+最新更新时间：2021-07-15 【倒叙】<br>
+最新Version：【Version：1.2.5】<br>
+更新内容：<br>
+1.2.5.1 新增 `NSMutableAttributedString` 标题和副标题！
 
 最新更新时间：2020-11-16 【倒叙】<br>
 最新Version：【Version：1.2.4】<br>

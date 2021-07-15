@@ -447,7 +447,6 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
             
             if (config.gridViewType == BAGridViewTypeImageTitle) {
                 NSInteger a = BAKit_RandomNumber(2000);
-                //                model.badge = @(BAKit_RandomNumber(2000)).stringValue;
                 model.badge = a == 0 ? @"": @(a).stringValue;
                 if (i == 1) {
                     model.badge = @"新功能";
@@ -464,7 +463,9 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
     if (!_gridDataArray2) {
         _gridDataArray2 = @[].mutableCopy;
         
-        NSArray *titleArray = @[@"200", @"20", @"200", @"10", @"300", @"30", @"10", @"300", @"30", ];
+        NSArray *titleArray = @[@"200", @"20", @"200",
+                                @"10", @"￥3899989", @"30",
+                                @"10", @"300", @"30", ];
         NSArray *descArray = @[@"1新增积分总量",
                                @"2返还积分总量",
                                @"3全返单元总量",
@@ -478,7 +479,21 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         for (NSInteger i = 0; i < titleArray.count; i++) {
             BAGridItemModel *model = [BAGridItemModel new];
             model.desc = descArray[i];
-            model.titleString = titleArray[i];
+            if (i == 4) {
+                //初始化一个attriburitedString对象
+                NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:titleArray[i]];
+                //给这个属性添加一个属性前3个字符的背景颜色
+                NSRange orRange = NSMakeRange(0, 1);
+                [attributeString addAttributes:@{NSForegroundColorAttributeName:[UIColor orangeColor], NSFontAttributeName:[UIFont systemFontOfSize:11]} range:orRange];
+              
+                //添加多个属性
+                NSRange seRange = NSMakeRange(3, 2);
+                [attributeString addAttributes:@{ NSForegroundColorAttributeName: [UIColor redColor], NSBackgroundColorAttributeName: [UIColor blueColor]} range:seRange];
+                
+                model.titleAttributedString = attributeString;
+            } else {
+                model.titleString = titleArray[i];
+            }
             
             [_gridDataArray2 addObject:model];
         }

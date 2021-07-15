@@ -61,11 +61,9 @@
 #ifndef BAKit_BAGridView_h
 #define BAKit_BAGridView_h
 
-#import "BAGridView.h"
-#import "BAGridItemModel.h"
-#import "BAKit_ConfigurationDefine.h"
-#import "BAGridView_Config.h"
-
-
+#import <BAGridView/BAGridView.h>
+#import <BAGridView/BAGridItemModel.h>
+#import <BAGridView/BAKit_ConfigurationDefine.h>
+#import <BAGridView/BAGridView_Config.h>
 
 #endif /* BAKit_BAGridView_h */

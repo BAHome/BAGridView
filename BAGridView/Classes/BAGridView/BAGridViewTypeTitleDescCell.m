@@ -83,14 +83,22 @@
 - (void)setConfig:(BAGridView_Config *)config {
     _config = config;
     
-    self.titleLabel.text = config.model.titleString;
-    self.titleLabel.font = config.ba_gridView_titleFont;
-    self.titleLabel.textColor = config.ba_gridView_titleColor;
-    
-    self.descLabel.text = config.model.desc;
-    self.descLabel.font = config.ba_gridView_titleDescFont;
-    self.descLabel.textColor = config.ba_gridView_titleDescColor;
-    
+    if (config.model.titleAttributedString.length > 0) {
+        self.titleLabel.attributedText = config.model.titleAttributedString;
+    } else {
+        self.titleLabel.text = config.model.titleString;
+        self.titleLabel.font = config.ba_gridView_titleFont;
+        self.titleLabel.textColor = config.ba_gridView_titleColor;
+    }
+   
+    if (config.model.descAttributedString.length > 0) {
+        self.descLabel.attributedText = config.model.descAttributedString;
+    } else {
+        self.descLabel.text = config.model.desc;
+        self.descLabel.font = config.ba_gridView_titleDescFont;
+        self.descLabel.textColor = config.ba_gridView_titleDescColor;
+    }
+   
     self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
     self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
 }

@@ -77,11 +77,13 @@
  标题
  */
 @property(nonatomic, copy) NSString *titleString;
+@property(nonatomic, copy) NSMutableAttributedString *titleAttributedString;
 
 /**
  副标题
  */
 @property(nonatomic, copy) NSString *desc;
+@property(nonatomic, copy) NSMutableAttributedString *descAttributedString;
 
 /**
  角标

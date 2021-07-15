@@ -228,9 +228,13 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
         }
     }
     
-    self.titleLabel.text = config.model.titleString;
-    self.titleLabel.font = config.ba_gridView_titleFont;
-    self.titleLabel.textColor = config.ba_gridView_titleColor;
+    if (config.model.titleAttributedString.length > 0) {
+        self.titleLabel.attributedText = config.model.titleAttributedString;
+    } else {
+        self.titleLabel.text = config.model.titleString;
+        self.titleLabel.font = config.ba_gridView_titleFont;
+        self.titleLabel.textColor = config.ba_gridView_titleColor;
+    }
     
     self.lineView_h.backgroundColor = config.ba_gridView_lineColor;
     self.lineView_w.backgroundColor = config.ba_gridView_lineColor;
