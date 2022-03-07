@@ -21,6 +21,11 @@
  项目源码地址：
  OC 版 ：https://github.com/BAHome/BAGridView
  
+ 最新更新时间：2022-3-07 【倒叙】<br>
+ 最新Version：【Version：1.2.6】<br>
+ 更新内容：<br>
+ 1.2.6.1 新增两行文字样式下的 badge 显示！
+ 
  最新更新时间：2021-07-15 【倒叙】<br>
  最新Version：【Version：1.2.5】<br>
  更新内容：<br>

@@ -376,6 +376,17 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
         // item：背景选中颜色，默认：无色
         config.ba_gridView_selectedBackgroundColor = [UIColor greenColor];
         
+        
+        // badge
+        config.ba_gridView_badgeType = kBAGridViewBadgeType_Center;
+        config.ba_gridView_badgeFont = [UIFont systemFontOfSize:10];
+        config.ba_gridView_badgeRectCorners = UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomRight;
+        //        config.ba_gridView_badgeCornerRadius = 3;
+        //        config.ba_gridView_badgeBgColor = UIColor.orangeColor;
+        //        config.ba_gridView_badgeTextColor = UIColor.greenColor;
+        //        config.ba_gridView_badgeHeight = 30;
+        //        config.ba_gridView_badgeOffsetPoint = CGPointMake(10, -10);
+        
         config.dataArray = self.gridDataArray2;
         
         BAKit_WeakSelf
@@ -491,8 +502,10 @@ static NSString * const kUrl2 = @"http://pic.58pic.com/58pic/12/68/14/87w58PIC3h
                 [attributeString addAttributes:@{ NSForegroundColorAttributeName: [UIColor redColor], NSBackgroundColorAttributeName: [UIColor blueColor]} range:seRange];
                 
                 model.titleAttributedString = attributeString;
+                model.badge = @"+39";
             } else {
                 model.titleString = titleArray[i];
+                model.badge = @"新增20";
             }
             
             [_gridDataArray2 addObject:model];

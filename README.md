@@ -35,7 +35,7 @@ BAGridView is available under the MIT license. See the LICENSE file for more inf
 
 ## 1、功能及简介
 * 1、支付宝首页 九宫格 布局封装<br>
-* 2、自适应按钮位置和数量<br>
+* 2、自适应按钮位置和数量、badge<br>
 * 3、自定义文字图片 或者 两行文字样式<br>
 * 4、自定义分割线：显示/隐藏<br>
 * 5、自定义分割线：颜色<br>
@@ -294,6 +294,11 @@ block:(BAGridViewBlock)block;
 欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
 
+最新更新时间：2022-3-07 【倒叙】<br>
+最新Version：【Version：1.2.6】<br>
+更新内容：<br>
+1.2.6.1 新增两行文字样式下的 badge 显示！
+
 最新更新时间：2021-07-15 【倒叙】<br>
 最新Version：【Version：1.2.5】<br>
 更新内容：<br>
@@ -304,10 +309,10 @@ block:(BAGridViewBlock)block;
 更新内容：<br>
 1.2.4.1 新增自定义横向滚动排列样式！
 
- 最新更新时间：2020-07-30 【倒叙】<br>
- 最新Version：【Version：1.2.2】<br>
- 更新内容：<br>
- 1.2.2.1、 新增背景图片填充模式！详见：code <br>
+最新更新时间：2020-07-30 【倒叙】<br>
+最新Version：【Version：1.2.2】<br>
+更新内容：<br>
+1.2.2.1、 新增背景图片填充模式！详见：code <br>
  
 最新更新时间：2020-05-13 【倒叙】<br>
 最新Version：【Version：1.2.1】<br>
