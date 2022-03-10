@@ -294,10 +294,10 @@ block:(BAGridViewBlock)block;
 欢迎使用 [【BAHome】](https://github.com/BAHome) 系列开源代码 ！
 如有更多需求，请前往：[【https://github.com/BAHome】](https://github.com/BAHome) 
 
-最新更新时间：2022-3-07 【倒叙】<br>
-最新Version：【Version：1.2.6】<br>
+最新更新时间：2022-3-10 【倒叙】<br>
+最新Version：【Version：1.2.7】<br>
 更新内容：<br>
-1.2.6.1 新增两行文字样式下的 badge 显示！
+1.2.7.1 新增两行文字样式下的 badge 显示！
 
 最新更新时间：2021-07-15 【倒叙】<br>
 最新Version：【Version：1.2.5】<br>

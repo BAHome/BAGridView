@@ -19,6 +19,7 @@
         self.ba_gridView_titleColor = BAKit_Color_Black_pod;
         self.ba_gridView_titleDescColor = BAKit_Color_Gray_9_pod;
         self.ba_gridView_itemImageInset = 0;
+        self.ba_gridView_titleWidthOffset = 10;
         self.ba_gridView_backgroundColor = BAKit_Color_White_pod;
         self.dataArray = @[].mutableCopy;
         self.ba_gridView_lineWidth = BAKit_Flat_pod(0.5f);

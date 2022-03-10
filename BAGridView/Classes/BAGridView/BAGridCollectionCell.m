@@ -158,14 +158,12 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
             min_y = 0;
         }
         self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
-        
     } else if (self.config.gridViewType == BAGridViewTypeBgImageTitle) {
         min_x = 0;
         min_w = view_w;
         min_h = BAKit_LabelSizeWithTextAndWidthAndFont(self.config.model.titleString, min_w, self.config.ba_gridView_titleFont).height+3;
         min_y = CGRectGetMidY(self.bounds) - min_h / 2;
         self.titleLabel.frame = BAKit_CGRectFlatMake_pod(min_x, min_y, min_w, min_h);
-        
     }
     
     min_x = view_w - self.config.ba_gridView_lineWidth;

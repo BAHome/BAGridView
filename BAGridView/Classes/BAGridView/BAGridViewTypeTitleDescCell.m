@@ -22,6 +22,15 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     return frame.size.width;
 }
 
+#pragma mark - 根据 NSAttributedString 文字内容、高度和字体返回 宽度
+CG_INLINE CGFloat
+BAKit_LabelWidthWithNSAttributedTextAndFont(NSAttributedString *text, CGFloat height, UIFont *font){
+    CGSize size = CGSizeMake(MAXFLOAT, height);
+    CGRect frame = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    return frame.size.width;
+}
+
 @interface BAGridViewTypeTitleDescCell ()
 
 @property(nonatomic, strong) UILabel *titleLabel;
@@ -56,7 +65,7 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     [self.contentView addSubview:_lineView_w];
     [self.contentView addSubview:_lineView_h];
     [self.contentView addSubview:self.badgeButton];
-    
+//    self.contentView.backgroundColor = BAKit_Color_RandomRGB_pod();
 }
 
 - (void)layoutSubviews {
@@ -72,7 +81,11 @@ BAKit_LabelWidthWithTextAndFont(NSString *text, CGFloat height, UIFont *font){
     CGFloat max_w = view_w - self.config.ba_gridView_lineWidth;
     
     min_h = view_h * 0.4;
-    min_w = BAKit_LabelWidthWithTextAndFont(self.titleLabel.text, min_h, self.titleLabel.font) + 5;
+    if (self.config.model.titleAttributedString.length > 0) {
+        min_w = BAKit_LabelWidthWithNSAttributedTextAndFont(self.config.model.titleAttributedString, min_h, self.titleLabel.font) + self.config.ba_gridView_titleWidthOffset;
+    } else {
+        min_w = BAKit_LabelWidthWithTextAndFont(self.titleLabel.text, min_h, self.titleLabel.font) + self.config.ba_gridView_titleWidthOffset;
+    }
     min_w = min_w > max_w ? max_w:min_w;
     min_y = CGRectGetMidY(self.bounds) - min_h / 2 - view_h * 0.15;
     min_x = max_w/2.0 - min_w/2.0;

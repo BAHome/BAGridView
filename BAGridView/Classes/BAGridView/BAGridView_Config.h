@@ -87,6 +87,11 @@ typedef void (^BAGridViewBlock)(BAGridItemModel *model, NSIndexPath *indexPath);
 @property(nonatomic, assign) CGFloat ba_gridView_itemImageInset;
 
 /**
+ item：标题宽度跳整 Offset，默认：10，正值：增加宽度，负值：减少宽度（注：只有上下都是标题样式才需要设置）
+ */
+@property(nonatomic, assign) CGFloat ba_gridView_titleWidthOffset;
+
+/**
  item：每行 item 的个数，默认：4个
  */
 @property(nonatomic, assign) NSInteger ba_gridView_rowCount;
